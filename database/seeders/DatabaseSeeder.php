@@ -31,5 +31,13 @@ class DatabaseSeeder extends Seeder
                 'role' => 2 // lecturer
             ]
         ]);
+
+        DB::table('proposals')->insert([
+            [
+                'author' => 1,
+                'title' => 'Aplikasi Pencatatan Pengeluaran',
+                'file' => 'proposal.pdf'
+            ]
+        ]);
     }
 }

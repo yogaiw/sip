@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
 
     public function skripsi() {
-        return $this->hasMany(Skripsi::class, 'author', 'id');
+        return $this->hasMany(Proposal::class, 'author', 'id');
     }
 }
