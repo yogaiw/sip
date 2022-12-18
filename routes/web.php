@@ -18,10 +18,12 @@ Route::get('/', [AuthController::class, 'loginPage']);
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/sudent', function () {
-    return view('student.dashboard');
-})->name('dashboard.student');
+Route::middleware('auth')->group(function () {
+    Route::get('/student', function () {
+        return view('student.dashboard');
+    })->name('dashboard.student');
 
-Route::get('/lecturer', function () {
-    return view('lecturer.dashboard');
-})->name('dashboard.lecturer');
+    Route::get('/lecturer', function () {
+        return view('lecturer.dashboard');
+    })->name('dashboard.lecturer');
+});
