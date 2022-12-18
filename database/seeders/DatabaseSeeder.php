@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'id_by_campus' => '18102179',
+                'username' => '18102179',
                 'name' => 'Zadita Awalia',
                 'email' => '18102179@ittelkom-pwt.ac.id',
                 'password' => Hash::make('18102179'),
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'id_by_campus' => '112233',
+                'username' => '112233',
                 'name' => 'Trihastuti',
                 'email' => '112233@ittelkom-pwt.ac.id',
                 'password' => Hash::make('112233'),
@@ -32,12 +34,12 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        DB::table('proposals')->insert([
-            [
-                'author' => 1,
-                'title' => 'Aplikasi Pencatatan Pengeluaran',
-                'file' => 'proposal.pdf'
-            ]
-        ]);
+        // DB::table('proposals')->insert([
+        //     [
+        //         'author' => 1,
+        //         'title' => 'Aplikasi Pencatatan Pengeluaran',
+        //         'file' => 'proposal.pdf'
+        //     ]
+        // ]);
     }
 }
