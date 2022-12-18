@@ -17,7 +17,11 @@ class CreateProposalsTable extends Migration
             $table->id();
             $table->foreignId('author')->references('id')->on('users')->onDelete('cascade');
             $table->text('title');
-            $table->string('file')->nullable();
+            $table->text('abstract_indonesian');
+            $table->text('abstract_english');
+            $table->foreignId('pembimbing1')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('pembimbing2')->nullable()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('penguji')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
