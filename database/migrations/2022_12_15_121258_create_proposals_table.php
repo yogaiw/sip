@@ -22,6 +22,7 @@ class CreateProposalsTable extends Migration
             $table->foreignId('pembimbing1')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('pembimbing2')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('penguji')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('status')->default(0); // 0:draft. 2:accepted
             $table->timestamps();
         });
     }
