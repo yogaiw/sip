@@ -12,6 +12,9 @@ class StudentController extends Controller
     {
         $currentUser = Auth::user()->id;
         $myProposal =  Proposal::with(['authorRelation', 'pembimbing1Relation', 'pembimbing2Relation', 'pengujiRelation'])->where('author', $currentUser)->get();
-        return view('student.dashboard', ['myProposal' => $myProposal]);
+        return view('student.dashboard', [
+            'myProposal' => $myProposal,
+            'profile' => Auth::user()
+        ]);
     }
 }
