@@ -93,11 +93,50 @@
           </button>
         </div>
         <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Judul</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Abstrak (Indonesia)</label>
+                    <textarea type="text" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Abstract (English)</label>
+                    <textarea type="text" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Dosen Pembimbing 1</label>
+                    <select class="form-control">
+                        @foreach ($lecturer as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Dosen Pembimbing 2</label>
+                    <small>Kosongkan jika tidak ada</small>
+                    <select class="form-control">
+                        <option value="null">-</option>
+                        @foreach ($lecturer as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label>Dosen Penguji</label>
+                    <select class="form-control">
+                        @foreach ($lecturer as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Unggah pdf</label>
+                    <input type="file" class="form-control-file">
+                </div>
+            </form>
         </div>
       </div>
     </div>
