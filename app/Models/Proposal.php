@@ -11,10 +11,27 @@ class Proposal extends Model
 
     protected $fillable = [
         'author',
-        'title'
+        'title',
+        'abstract_indonesian',
+        'abstract_english',
+        'pembimbing1',
+        'pembimbing2',
+        'penguji',
     ];
 
     public function author() {
         return $this->belongsTo(User::class, 'author');
+    }
+
+    public function pembimbing1() {
+        return $this->belongsTo(User::class, 'pembimbing1');
+    }
+
+    public function pembimbing2() {
+        return $this->belongsTo(User::class, 'pembimbing2');
+    }
+
+    public function penguji() {
+        return $this->belongsTo(User::class, 'penguji');
     }
 }

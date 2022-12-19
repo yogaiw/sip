@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'id_by_campus',
+        'username',
         'email',
         'password',
         'role'
@@ -46,5 +47,9 @@ class User extends Authenticatable
 
     public function skripsi() {
         return $this->hasMany(Proposal::class, 'author', 'id');
+    }
+
+    public function pembimbing1() {
+        return $this->hasMany(Proposal::class, 'pembimbing1', 'id');
     }
 }
