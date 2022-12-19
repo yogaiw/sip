@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function index()
     {
         $currentUser = Auth::user()->id;
-        $myProposal =  Proposal::with('author', 'pembimbing1', 'pembimbing2', 'penguji')->where('author', $currentUser)->get();
+        $myProposal =  Proposal::with(['authorRelation', 'pembimbing1Relation', 'pembimbing2Relation', 'pengujiRelation'])->where('author', $currentUser)->get();
         return view('student.dashboard', ['myProposal' => $myProposal]);
     }
 }

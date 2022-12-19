@@ -19,19 +19,19 @@ class Proposal extends Model
         'penguji',
     ];
 
-    public function author() {
+    public function authorRelation() {
         return $this->belongsTo(User::class, 'author');
     }
 
-    public function pembimbing1() {
+    public function pembimbing1Relation() {
         return $this->belongsTo(User::class, 'pembimbing1');
     }
 
-    public function pembimbing2() {
+    public function pembimbing2Relation() {
         return $this->belongsTo(User::class, 'pembimbing2');
     }
 
-    public function penguji() {
+    public function pengujiRelation() {
         return $this->belongsTo(User::class, 'penguji');
     }
 }

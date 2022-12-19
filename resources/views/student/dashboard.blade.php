@@ -121,9 +121,13 @@
                             <tr>
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->abstract_indonesian }}</td>
-                                <td>{{ $item->pembimbing1->name }}</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
+                                <td>{{ $item->pembimbing1Relation->name }}</td>
+                                @if ($item->pembimbing2Relation != null)
+                                    <td>{{ $item->pembimbing2Relation->name }}</td>
+                                @else
+                                    <td>-</td>
+                                @endif
+                                <td>{{ $item->pengujiRelation->name }}</td>
                             </tr>
                             @endforeach
                         </tbody>
