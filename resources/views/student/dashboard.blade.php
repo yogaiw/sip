@@ -42,6 +42,9 @@
                 <h6 class="m-0 font-weight-bold text-primary">Proposal Aktif Anda</h6>
             </div>
             <div class="card-body">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unggahProposal">
+                    Buat Sekarang
+                </button>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -93,22 +96,23 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('proposal.create') }}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <label>Judul</label>
-                    <input type="text" class="form-control" required>
+                    <input type="text" name="title" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Abstrak (Indonesia)</label>
-                    <textarea type="text" class="form-control" required></textarea>
+                    <textarea type="text" name="abstract_indonesian" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Abstract (English)</label>
-                    <textarea type="text" class="form-control" required></textarea>
+                    <textarea type="text" name="abstract_english" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Dosen Pembimbing 1</label>
-                    <select class="form-control">
+                    <select class="form-control" name="pembimbing1" required>
                         @foreach ($lecturer as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
@@ -117,8 +121,8 @@
                 <div class="form-group">
                     <label>Dosen Pembimbing 2</label>
                     <small>Kosongkan jika tidak ada</small>
-                    <select class="form-control">
-                        <option value="null">-</option>
+                    <select class="form-control" name="pembimbing2">
+                        <option value="">-</option>
                         @foreach ($lecturer as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
@@ -126,7 +130,7 @@
                 </div>
                 <div class="form-group">
                     <label>Dosen Penguji</label>
-                    <select class="form-control">
+                    <select class="form-control" name="penguji" required>
                         @foreach ($lecturer as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
@@ -136,6 +140,7 @@
                     <label for="exampleFormControlFile1">Unggah pdf</label>
                     <input type="file" class="form-control-file">
                 </div>
+                <button type="submit" class="btn btn-success">Unggah Proposal</button>
             </form>
         </div>
       </div>

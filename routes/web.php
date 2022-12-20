@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/student', [StudentController::class, 'index'])->name('dashboard.student');
+    Route::post('/student/proposal/create', [ProposalController::class, 'create'])->name('proposal.create');
 
     Route::get('/lecturer', function () {
         return view('lecturer.dashboard');

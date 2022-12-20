@@ -42,16 +42,16 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        DB::table('proposals')->insert([
-            [
-                'author' => 1,
-                'title' => 'Pengembangan Aplikasi Sistem Informasi Akademik Berbasis Web',
-                'abstract_indonesian' => 'SIAKAD',
-                'abstract_english' => 'SIAKAD',
-                'pembimbing1' => 2,
-                'penguji' => 3,
-                'status' => 0
-            ]
-        ]);
+        // DB::table('proposals')->insert([
+        //     [
+        //         'author' => 1,
+        //         'title' => 'Pengembangan Aplikasi Sistem Informasi Akademik Berbasis Web',
+        //         'abstract_indonesian' => 'SIAKAD',
+        //         'abstract_english' => 'SIAKAD',
+        //         'pembimbing1' => 2,
+        //         'penguji' => 3,
+        //         'status' => 0
+        //     ]
+        // ]);
     }
 }
