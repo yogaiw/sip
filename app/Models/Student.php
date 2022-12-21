@@ -13,4 +13,18 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function pembimbing1Relation()
+    {
+        return $this->belongsTo(User::class, 'pembimbing1', 'id');
+    }
+
+    public function pembimbing2Relation()
+    {
+        return $this->belongsTo(User::class, 'pembimbing2', 'id');
+    }
+
+    public function pengujiRelation() {
+        return $this->belongsTo(User::class, 'penguji', 'id');
+    }
 }

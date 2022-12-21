@@ -17,41 +17,55 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'id_by_campus' => '18102179',
-                'username' => 'zadita',
-                'name' => 'Zadita Awalia',
-                'email' => '18102179@ittelkom-pwt.ac.id',
+                'username' => 'zadita', // 1
+                'email' => 'zadita@localhost',
                 'password' => Hash::make('zadita'),
-                'role' => 1 // student
+                'role' => 1
             ],
             [
-                'id_by_campus' => '112233',
-                'username' => 'trihasututi',
-                'name' => 'Trihastuti',
-                'email' => '112233@ittelkom-pwt.ac.id',
-                'password' => Hash::make('112233'),
-                'role' => 2 // lecturer
+                'username' => 'trihastuti', // 2
+                'email' => 'trihastuti@localhost',
+                'password' => Hash::make('trihastuti'),
+                'role' => 2
             ],
             [
-                'id_by_campus' => '445566',
-                'username' => 'mega',
-                'name' => 'Mega Pranata',
-                'email' => '445566@ittelkom-pwt.ac.id',
+                'username' => 'mega', // 3
+                'email' => 'mega@localhost',
                 'password' => Hash::make('mega'),
-                'role' => 2 // lecturer
+                'role' => 2
             ]
         ]);
 
-        // DB::table('proposals')->insert([
-        //     [
-        //         'author' => 1,
-        //         'title' => 'Pengembangan Aplikasi Sistem Informasi Akademik Berbasis Web',
-        //         'abstract_indonesian' => 'SIAKAD',
-        //         'abstract_english' => 'SIAKAD',
-        //         'pembimbing1' => 2,
-        //         'penguji' => 3,
-        //         'status' => 0
-        //     ]
-        // ]);
+        DB::table('students')->insert([
+            [
+                'user_id' => 1,
+                'nim' => '18102179',
+                'name' => 'Zadita Awalia',
+                'pembimbing1' => 2,
+                'penguji' => 3
+            ]
+        ]);
+
+        DB::table('lecturers')->insert([
+            [
+                'user_id' => 2,
+                'nip' => '1234',
+                'name' => 'Trihastuti'
+            ],
+            [
+                'user_id' => 3,
+                'nip' => '5678',
+                'name' => 'Mega Pranata'
+            ]
+        ]);
+
+        DB::table('proposals')->insert([
+            [
+                'author' => 1,
+                'title' => 'Aplikasi Sirespaspro',
+                'abstract_indonesian' => 'anjay',
+                'abstract_english' => 'amazing'
+            ]
+        ]);
     }
 }
