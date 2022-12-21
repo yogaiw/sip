@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'nim' => '18102179',
                 'name' => 'Zadita Awalia',
-                'pembimbing1' => 2,
-                'penguji' => 3
+                'pembimbing1_id' => 2,
+                'penguji_id' => 3
             ]
         ]);
 
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('proposals')->insert([
             [
-                'author' => 1,
+                'author_id' => 1,
                 'title' => 'Aplikasi Sirespaspro',
                 'abstract_indonesian' => 'anjay',
                 'abstract_english' => 'amazing'

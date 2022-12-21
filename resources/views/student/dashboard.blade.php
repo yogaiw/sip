@@ -18,11 +18,15 @@
                             Profil Mahasiswa</div>
                         <div class="d-flex justify-content-between">
                             <div class="mb-0 font-weight-bold text-gray-800">Nama</div>
-                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->name }}</div>
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->name }}</div>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <div class="mb-0 font-weight-bold text-gray-800">NIM</div>
-                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->id_by_campus }}</div>
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->nim }}</div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div class="mb-0 font-weight-bold text-gray-800">Pembimbing 1</div>
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->pembimbing1->lecturer->name }}</div>
                         </div>
                     </div>
                 </div>
@@ -59,13 +63,9 @@
                             @forelse ($myProposal as $item)
                             <tr>
                                 <td>{{ $item->title }}</td>
-                                <td>{{ $item->pembimbing1Relation->name }}</td>
-                                @if ($item->pembimbing2Relation != null)
-                                    <td>{{ $item->pembimbing2Relation->name }}</td>
-                                @else
-                                    <td>-</td>
-                                @endif
-                                <td>{{ $item->pengujiRelation->name }}</td>
+                                <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
+                                <td></td>
+                                <td>{{ $item->author->student->penguji->lecturer->name }}</td>
                             </tr>
                             @empty
                             <tr>
@@ -82,68 +82,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Proposal Modal -->
-<div class="modal fade" id="unggahProposal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Unggah Proposal</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <form action="{{ route('proposal.create') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label>Judul</label>
-                    <input type="text" name="title" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Abstrak (Indonesia)</label>
-                    <textarea type="text" name="abstract_indonesian" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Abstract (English)</label>
-                    <textarea type="text" name="abstract_english" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Dosen Pembimbing 1</label>
-                    <select class="form-control" name="pembimbing1" required>
-                        @foreach ($lecturer as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                      </select>
-                </div>
-                <div class="form-group">
-                    <label>Dosen Pembimbing 2</label>
-                    <small>Kosongkan jika tidak ada</small>
-                    <select class="form-control" name="pembimbing2">
-                        <option value="">-</option>
-                        @foreach ($lecturer as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                      </select>
-                </div>
-                <div class="form-group">
-                    <label>Dosen Penguji</label>
-                    <select class="form-control" name="penguji" required>
-                        @foreach ($lecturer as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                      </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Unggah pdf</label>
-                    <input type="file" class="form-control-file">
-                </div>
-                <button type="submit" class="btn btn-success">Unggah Proposal</button>
-            </form>
-        </div>
-      </div>
     </div>
 </div>
 @endsection

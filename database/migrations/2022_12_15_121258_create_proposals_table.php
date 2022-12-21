@@ -15,7 +15,7 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('title');
             $table->text('abstract_indonesian');
             $table->text('abstract_english');

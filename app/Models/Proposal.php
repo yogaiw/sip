@@ -17,8 +17,8 @@ class Proposal extends Model
         'status'
     ];
 
-    public function authorRelation()
+    public function author()
     {
-        return $this->belongsTo(User::class, 'author', 'id');
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
 }

@@ -14,17 +14,17 @@ class Student extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function pembimbing1Relation()
+    public function pembimbing1()
     {
-        return $this->belongsTo(User::class, 'pembimbing1', 'id');
+        return $this->belongsTo(User::class, 'pembimbing1_id', 'id');
     }
 
-    public function pembimbing2Relation()
+    public function pembimbing2()
     {
-        return $this->belongsTo(User::class, 'pembimbing2', 'id');
+        return $this->belongsTo(User::class, 'pembimbing2_id', 'id');
     }
 
-    public function pengujiRelation() {
-        return $this->belongsTo(User::class, 'penguji', 'id');
+    public function penguji() {
+        return $this->belongsTo(User::class, 'penguji_id', 'id');
     }
 }

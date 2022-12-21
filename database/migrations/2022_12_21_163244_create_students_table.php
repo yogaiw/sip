@@ -18,9 +18,9 @@ class CreateStudentsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nim')->unique();
             $table->string('name');
-            $table->foreignId('pembimbing1')->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('pembimbing2')->nullable()->references('id')->on('users')->onDelete('cascade');
-            $table->foreignId('penguji')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('pembimbing1_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('pembimbing2_id')->nullable()->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('penguji_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
