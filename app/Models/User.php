@@ -18,8 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'id_by_campus',
         'username',
         'email',
         'password',
@@ -45,11 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function skripsi() {
-        return $this->hasMany(Proposal::class, 'author', 'id');
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'user_id', 'id');
     }
 
-    public function pembimbing1() {
-        return $this->hasMany(Proposal::class, 'pembimbing1', 'id');
+    public function lecturer()
+    {
+        return $this->hasOne(Lecturer::class, 'user_id', 'id');
     }
 }

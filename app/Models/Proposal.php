@@ -14,24 +14,11 @@ class Proposal extends Model
         'title',
         'abstract_indonesian',
         'abstract_english',
-        'pembimbing1',
-        'pembimbing2',
-        'penguji',
+        'status'
     ];
 
-    public function authorRelation() {
-        return $this->belongsTo(User::class, 'author');
-    }
-
-    public function pembimbing1Relation() {
-        return $this->belongsTo(User::class, 'pembimbing1');
-    }
-
-    public function pembimbing2Relation() {
-        return $this->belongsTo(User::class, 'pembimbing2');
-    }
-
-    public function pengujiRelation() {
-        return $this->belongsTo(User::class, 'penguji');
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id');
     }
 }
