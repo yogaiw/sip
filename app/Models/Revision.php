@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Revision extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'proposal_id',
+        'message',
+        'feedback',
+        'file'
+    ];
+
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
+    }
 }

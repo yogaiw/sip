@@ -21,4 +21,9 @@ class Proposal extends Model
     {
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
+
+    public function revisions()
+    {
+        return $this->hasMany(Revision::class, 'proposal_id', 'id');
+    }
 }

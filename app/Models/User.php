@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Lecturer::class, 'user_id', 'id');
     }
+
+    public function proposal()
+    {
+        return $this->hasMany(Proposal::class, 'author_id', 'id');
+    }
 }

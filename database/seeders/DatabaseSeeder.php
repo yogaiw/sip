@@ -67,5 +67,38 @@ class DatabaseSeeder extends Seeder
                 'abstract_english' => 'amazing'
             ]
         ]);
+
+        DB::table('revisions')->insert([
+            [
+                'proposal_id' => 1,
+                'message' => 'revisi pertama',
+                'feedback' => null
+            ],
+            [
+                'proposal_id' => 1,
+                'message' => null,
+                'feedback' => 'BAB II kurang blablabl'
+            ],
+            [
+                'proposal_id' => 1,
+                'message' => 'revisi kedua menanggapi feedback',
+                'feedback' => null
+            ],
+            [
+                'proposal_id' => 1,
+                'message' => null,
+                'feedback' => 'Daftar Pustaka nya bblabla'
+            ],
+            [
+                'proposal_id' => 1,
+                'message' => 'sudah diperbaiki',
+                'feedback' => null
+            ],
+            [
+                'proposal_id' => 1,
+                'message' => null,
+                'feedback' => 'Baik saya acc'
+            ],
+        ]);
     }
 }
