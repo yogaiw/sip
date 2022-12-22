@@ -40,7 +40,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Proposal Aktif Anda</h6>
             </div>
             <div class="card-body">
-                @if ($myProposal != null)
+                @if ($myProposal->isNotEmpty())
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
@@ -57,6 +57,8 @@
                         </tr>
                     </table>
                 </div>
+                @else
+                <span class="align-middle">Anda belum mengisi informasi proposal anda.</span>
                 @endif
             </div>
         </div>
