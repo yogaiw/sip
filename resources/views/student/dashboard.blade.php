@@ -33,53 +33,31 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Content Row -->
-
-<div class="row">
-
     <!-- Data Table -->
-    <div class="col-xl-12 col-lg-12">
+    <div class="col-xl-9 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Proposal Aktif Anda</h6>
             </div>
             <div class="card-body">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unggahProposal">
-                    Buat Sekarang
-                </button>
+                @if ($myProposal != null)
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Judul</th>
-                                <th>Pembimbing 1</th>
-                                <th>Pembimbing 2</th>
-                                <th>Penguji</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($myProposal as $item)
-                            <tr>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
-                                <td></td>
-                                <td>{{ $item->author->student->penguji->lecturer->name }}</td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="4" class="text-center">Tidak ada proposal aktif.
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unggahProposal">
-                                      Buat Sekarang
-                                    </button>
-                                </td>
-                            </tr>
-                            @endforelse
-                        </tbody>
+                        <tr>
+                            <th>Judul Proposal</th>
+                            <td>{{ $myProposal->first()->title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Abstrak</th>
+                            <td>{{ $myProposal->first()->abstract_indonesian }}</td>
+                        </tr>
+                        <tr>
+                            <th>Abstract</th>
+                            <td>{{ $myProposal->first()->abstract_english }}</td>
+                        </tr>
                     </table>
                 </div>
+                @endif
             </div>
         </div>
     </div>
