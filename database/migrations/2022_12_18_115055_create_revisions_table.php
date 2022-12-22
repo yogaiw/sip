@@ -16,8 +16,8 @@ class CreateRevisionsTable extends Migration
         Schema::create('revisions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('proposal_id')->references('id')->on('proposals')->onDelete('cascade');
+            $table->foreignId('from_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('message')->nullable();
-            $table->text('feedback')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
         });

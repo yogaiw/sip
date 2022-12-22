@@ -71,33 +71,33 @@ class DatabaseSeeder extends Seeder
         DB::table('revisions')->insert([
             [
                 'proposal_id' => 1,
-                'message' => 'revisi pertama',
-                'feedback' => null
+                'from_id' => 1,
+                'message' => 'revisi pertama'
             ],
             [
                 'proposal_id' => 1,
-                'message' => null,
-                'feedback' => 'BAB II kurang blablabl'
+                'from_id' => 3,
+                'message' => 'BAB II kurang blablabl'
             ],
             [
                 'proposal_id' => 1,
-                'message' => 'revisi kedua menanggapi feedback',
-                'feedback' => null
+                'from_id' => 1,
+                'message' => 'revisi kedua menanggapi feedback'
             ],
             [
                 'proposal_id' => 1,
-                'message' => null,
-                'feedback' => 'Daftar Pustaka nya bblabla'
+                'from_id' => 3,
+                'message' => 'Daftar Pustaka nya bblabla'
             ],
             [
                 'proposal_id' => 1,
-                'message' => 'sudah diperbaiki',
-                'feedback' => null
+                'from_id' => 1,
+                'message' => 'sudah diperbaiki'
             ],
             [
                 'proposal_id' => 1,
-                'message' => null,
-                'feedback' => 'Baik saya acc'
+                'from_id' => 3,
+                'message' => 'Baik saya acc'
             ],
         ]);
     }

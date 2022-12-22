@@ -72,13 +72,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Log Revisi</h6>
             </div>
             <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <b>Anda</b>
-                    <b>Dosen Penguji</b>
-                </div>
                 @forelse ($revisions as $item)
-                    {{ $item->message}} |
-                    {{ $item->feedback }} <br>
+                    @if ($item->user->role == 1)
+                        <b>{{ $item->user->student->name }}</b> <br>
+                    @elseif ($item->user->role == 2)
+                        <b>{{ $item->user->lecturer->name }}</b> <br>
+                    @endif
+                    {{ $item->message}} <br><br>
                 @empty
 
                 @endforelse

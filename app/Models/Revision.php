@@ -20,4 +20,8 @@ class Revision extends Model
     {
         return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'from_id', 'id');
+    }
 }
