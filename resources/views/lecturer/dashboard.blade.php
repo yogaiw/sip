@@ -143,6 +143,29 @@
                         </tbody>
                     </table>
                 </div>
+                <h5 class="mb-3 mt-5">Sebagai Penguji</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Judul Proposal</th>
+                                <th>Mahasiswa</th>
+                                <th>Prodi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($mhsPengujian as $item)
+                            <td>x</td>
+                            <td>{{ $item->user->proposal->first()->title }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>not yet implemented</td>
+                            @empty
+                            <td colspan="4">Tidak ada data</td>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
