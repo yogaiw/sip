@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class ProposalController extends Controller
 {
     public function create(Request $request) {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'abstract_indonesian' => 'required',
+            'abstract_english' => 'required',
+            // 'file' => 'required'
+        ]);
+
         $proposal = new Proposal();
         $proposal->author_id = Auth::user()->id;
         $proposal->title = $request->title;

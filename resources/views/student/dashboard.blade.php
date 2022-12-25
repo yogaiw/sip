@@ -32,6 +32,7 @@
                             <div class="mb-0 font-weight-bold text-gray-800">Penguji</div>
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->penguji->lecturer->name }}</div>
                         </div>
+                        <a href="" class="btn btn-primary btn-sm mt-3">Edit Profil</a>
                     </div>
                 </div>
             </div>
@@ -87,7 +88,7 @@
                     @endif
                     {{ $item->message}} <br>
                     {{ date('D, d M Y H:i', strtotime($item->created_at)) }} <br>
-                    <a href="#" class="btn btn-sm btn-success">File</a> <br><br>
+                    <a href="#" class="btn btn-sm btn-primary">File</a> <br><br>
                 @empty
                     <span class="align-middle">Anda belum melakukan upload proposal</span>
                 @endforelse
