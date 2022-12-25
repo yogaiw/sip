@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +29,6 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('auth.lecturer')->group(function () {
-        Route::get('/lecturer', function () {
-            return view('lecturer.dashboard');
-        })->name('dashboard.lecturer');
+        Route::get('/lecturer',[LecturerController::class, 'index'])->name('dashboard.lecturer');
     });
 });
