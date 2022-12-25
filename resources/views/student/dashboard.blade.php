@@ -28,6 +28,10 @@
                             <div class="mb-0 font-weight-bold text-gray-800">Pembimbing 1</div>
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->pembimbing1->lecturer->name }}</div>
                         </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div class="mb-0 font-weight-bold text-gray-800">Penguji</div>
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->penguji->lecturer->name }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,6 +63,9 @@
                 </div>
                 @else
                 <span class="align-middle">Anda belum mengisi informasi proposal anda.</span>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadProposal">
+                    Upload Proposal
+                </button>
                 @endif
             </div>
         </div>
@@ -84,6 +91,42 @@
                 @endforelse
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="uploadProposal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="{{ route('proposal.create') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label>Judul</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Abstrak (Indonesia)</label>
+                    <textarea type="text" name="abstract_indonesian" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Abstract (English)</label>
+                    <textarea type="text" name="abstract_english" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Unggah pdf</label>
+                    <input type="file" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-success">Unggah Proposal</button>
+            </form>
+        </div>
+      </div>
     </div>
 </div>
 @endsection

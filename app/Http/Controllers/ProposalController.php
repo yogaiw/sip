@@ -11,19 +11,16 @@ class ProposalController extends Controller
 {
     public function create(Request $request) {
         $proposal = new Proposal();
-        $proposal->author = Auth::user()->id;
+        $proposal->author_id = Auth::user()->id;
         $proposal->title = $request->title;
         $proposal->abstract_indonesian = $request->abstract_indonesian;
         $proposal->abstract_english = $request->abstract_english;
-        $proposal->pembimbing1 = $request->pembimbing1;
-        $proposal->pembimbing2 = $request->pembimbing2;
-        $proposal->penguji = $request->penguji;
         $proposal->save();
 
         $revision = new Revision();
-        $revision->proposal_id = Proposal::where('author', Auth::user()->id)->orderBy('id', 'desc')->first()->id;
+        $revision->proposal_id = Proposal::where('author_id', Auth::user()->id)->orderBy('id', 'desc')->first()->id;
+        $revision->from_id = Auth::user()->id;
         $revision->message = "Inisiasi Proposal";
-        $revision->feedback = "-";
         // $revision->file = $request->file;
         $revision->save();
 
