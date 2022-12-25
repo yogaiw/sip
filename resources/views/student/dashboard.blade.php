@@ -80,7 +80,7 @@
                     @endif
                     {{ $item->message}} <br><br>
                 @empty
-
+                    <span class="align-middle">Anda belum melakukan upload proposal</span>
                 @endforelse
             </div>
         </div>

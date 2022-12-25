@@ -15,7 +15,12 @@ class StudentController extends Controller
         $currentUser = Auth::user();
         $lecturer = User::where('role', 2)->get();
         $myProposal =  Proposal::where('author_id', $currentUser->id)->get();
-        $revisions = Revision::where('proposal_id', $currentUser->proposal->first()->id)->orderBy('id', 'desc')->get();
+
+        if($myProposal->isNotEmpty()) {
+            $revisions = Revision::where('proposal_id', $currentUser->proposal->first()->id)->orderBy('id', 'desc')->get();
+        } else {
+            $revisions = [];
+        }
 
         return view('student.dashboard', [
             'myProposal' => $myProposal,
