@@ -85,7 +85,9 @@
                     @elseif ($item->user->role == 2)
                         <b>{{ $item->user->lecturer->name }}</b> <br>
                     @endif
-                    {{ $item->message}} <br><br>
+                    {{ $item->message}} <br>
+                    {{ date('D, d M Y H:i', strtotime($item->created_at)) }} <br>
+                    <a href="#" class="btn btn-sm btn-success">File</a> <br><br>
                 @empty
                     <span class="align-middle">Anda belum melakukan upload proposal</span>
                 @endforelse
