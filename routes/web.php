@@ -21,10 +21,15 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/student', [StudentController::class, 'index'])->name('dashboard.student');
-    Route::post('/student/proposal/create', [ProposalController::class, 'create'])->name('proposal.create');
 
-    Route::get('/lecturer', function () {
-        return view('lecturer.dashboard');
-    })->name('dashboard.lecturer');
+    Route::middleware('auth.student')->group(function () {
+        Route::get('/student', [StudentController::class, 'index'])->name('dashboard.student');
+        Route::post('/student/proposal/create', [ProposalController::class, 'create'])->name('proposal.create');
+    });
+
+    Route::middleware('auth.lecturer')->group(function () {
+        Route::get('/lecturer', function () {
+            return view('lecturer.dashboard');
+        })->name('dashboard.lecturer');
+    });
 });
