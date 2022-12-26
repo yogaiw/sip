@@ -62,7 +62,11 @@
                                 <tbody>
                                     @foreach ($mhsBimbingan1 as $item)
                                     <td>x</td>
-                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @if ($item->user->proposal->count() == 0)
+                                        <td>Belum ada judul</td>
+                                    @else
+                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
                                     @endforeach
@@ -85,7 +89,11 @@
                                 <tbody>
                                     @foreach ($mhsBimbingan2 as $item)
                                     <td>x</td>
-                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @if ($item->user->proposal->count() == 0)
+                                        <td>Belum ada judul</td>
+                                    @else
+                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
                                     @endforeach
@@ -108,7 +116,11 @@
                                 <tbody>
                                     @foreach ($mhsPengujian as $item)
                                     <td>x</td>
-                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @if ($item->user->proposal->count() == 0)
+                                        <td>Belum ada judul</td>
+                                    @else
+                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                    @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
                                     @endforeach
