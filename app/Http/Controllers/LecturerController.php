@@ -16,7 +16,8 @@ class LecturerController extends Controller
         return view('lecturer.dashboard', [
             'mhsBimbingan1' => $mhsBimbingan1,
             'mhsBimbingan2' => $mhsBimbingan2,
-            'mhsPengujian' => $mhsPengujian
+            'mhsPengujian' => $mhsPengujian,
+            'profile' => Auth::user()
         ]);
     }
 }
