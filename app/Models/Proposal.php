@@ -10,7 +10,7 @@ class Proposal extends Model
     use HasFactory;
 
     protected $fillable = [
-        'author',
+        'author_id',
         'title',
         'abstract_indonesian',
         'abstract_english',

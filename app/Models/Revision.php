@@ -11,8 +11,8 @@ class Revision extends Model
 
     protected $fillable = [
         'proposal_id',
+        'from_id',
         'message',
-        'feedback',
         'file'
     ];
 
