@@ -99,7 +99,7 @@
             <div class="card-body">
                 <h5 class="mb-3">Sebagai Pembimbing 1</h5>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -109,20 +109,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($mhsBimbingan1 as $item)
+                            @foreach ($mhsBimbingan1 as $item)
                             <td>x</td>
                             <td>{{ $item->user->proposal->first()->title }}</td>
                             <td>{{ $item->name }}</td>
                             <td>not yet implemented</td>
-                            @empty
-                            <td colspan="4">Tidak ada data</td>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
 
                 <h5 class="mb-3 mt-5">Sebagai Pembimbing 2</h5>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -132,20 +130,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($mhsBimbingan2 as $item)
+                            @foreach ($mhsBimbingan2 as $item)
                             <td>x</td>
                             <td>{{ $item->user->proposal->first()->title }}</td>
                             <td>{{ $item->name }}</td>
                             <td>not yet implemented</td>
-                            @empty
-                            <td colspan="4">Tidak ada data</td>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <h5 class="mb-3 mt-5">Sebagai Penguji</h5>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -155,14 +151,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($mhsPengujian as $item)
+                            @foreach ($mhsPengujian as $item)
                             <td>x</td>
                             <td>{{ $item->user->proposal->first()->title }}</td>
                             <td>{{ $item->name }}</td>
                             <td>not yet implemented</td>
-                            @empty
-                            <td colspan="4">Tidak ada data</td>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
