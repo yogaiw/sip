@@ -67,7 +67,7 @@
                 <div class="tab-content" id="ex1-content">
                     <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
                         <h3 class="mb-3">Daftar Sebagai Mahasiswa</h3>
-                        <form action="" method="POST">
+                        <form action="{{ route('register.student') }}" method="POST">
                             @csrf
                             <small class="mb-3">username dan password akan digunakan untuk login nanti</small>
                             <div class="form-outline mb-2">
@@ -78,11 +78,42 @@
                                 <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Password" name="password" required/>
                                 <label class="form-label" for="form3Example3">Password</label>
                             </div>
+                            <hr>
+                            <small class="mb-3">Informasi Pribadi</small>
+                            <div class="form-outline mb-2">
+                                <input type="number" id="form3Example3" class="form-control form-control-lg" placeholder="NIM" name="nim" required/>
+                                <label class="form-label" for="form3Example3">NIM</label>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Nama lengkap" name="name" required/>
+                                <label class="form-label" for="form3Example3">Nama Lengkap</label>
+                            </div>
                             <div class="form-outline mb-2">
                                 <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Email" name="email" required/>
                                 <label class="form-label" for="form3Example3">Email</label>
                             </div>
-                            <input type="hidden" name="role" value="1">
+                            <div class="form-outline mb-2">
+                                <select name="pembimbing1" class="browser-default custom-select">
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <select name="pembimbing2" class="browser-default custom-select">
+                                    <option value="">kosongi jika tidak ada</option>
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <select name="penguji" class="browser-default custom-select">
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-primary">Daftar</button>
                         </form>
                     </div>
@@ -103,7 +134,6 @@
                                 <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Email" name="email" required/>
                                 <label class="form-label" for="form3Example3">Email</label>
                             </div>
-                            <input type="hidden" name="role" value="2">
                             <button type="submit" class="btn btn-primary">Daftar</button>
                         </form>
                     </div>
