@@ -94,71 +94,89 @@
     <div class="col-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Proposal Bimbingan Anda</h6>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sebagai Pembimbing 1</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sebagai Pembimbing 2</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Sebagai Penguji</a>
+                    </li>
+                </ul>
             </div>
             <div class="card-body">
-                <h5 class="mb-3">Sebagai Pembimbing 1</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Judul Proposal</th>
-                                <th>Mahasiswa</th>
-                                <th>Prodi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($mhsBimbingan1 as $item)
-                            <td>x</td>
-                            <td>{{ $item->user->proposal->first()->title }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>not yet implemented</td>
-                            @endforeach
-                        </tbody>
-                    </table>
-
-                <h5 class="mb-3 mt-5">Sebagai Pembimbing 2</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Judul Proposal</th>
-                                <th>Mahasiswa</th>
-                                <th>Prodi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($mhsBimbingan2 as $item)
-                            <td>x</td>
-                            <td>{{ $item->user->proposal->first()->title }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>not yet implemented</td>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <h5 class="mb-3 mt-5">Sebagai Penguji</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Judul Proposal</th>
-                                <th>Mahasiswa</th>
-                                <th>Prodi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($mhsPengujian as $item)
-                            <td>x</td>
-                            <td>{{ $item->user->proposal->first()->title }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>not yet implemented</td>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <p class="mb-3">Mahasiswa bimbingan anda sebagai Dosen Pembimbing 1</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Prodi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($mhsBimbingan1 as $item)
+                                    <td>x</td>
+                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>not yet implemented</td>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <p class="mb-3">Mahasiswa bimbingan anda sebagai Dosen Pembimbing 2</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Prodi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($mhsBimbingan2 as $item)
+                                    <td>x</td>
+                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>not yet implemented</td>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <p class="mb-3">Proposal Mahasiswa yang Anda Uji</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Prodi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($mhsPengujian as $item)
+                                    <td>x</td>
+                                    <td>{{ $item->user->proposal->first()->title }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>not yet implemented</td>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
