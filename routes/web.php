@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthController::class, 'loginPage']);
 Route::post('/login', [AuthController::class, 'authenticate']);
+Route::get('/register', function () {
+    return view('register');
+});
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
