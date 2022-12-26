@@ -18,15 +18,16 @@ class ProposalController extends Controller
             // 'file' => 'required'
         ]);
 
-        $proposal = new Proposal();
-        $proposal->author_id = Auth::user()->id;
-        $proposal->title = $request->title;
-        $proposal->abstract_indonesian = $request->abstract_indonesian;
-        $proposal->abstract_english = $request->abstract_english;
-        $proposal->save();
+        $proposal = Proposal::create([
+            'author_id' => Auth::user()->id,
+            'title' => $request->title,
+            'abstract_indonesian' => $request->abstract_indonesian,
+            'abstract_english' => $request->abstract_english,
+            'status' => 0
+        ]);
 
         $revision = new Revision();
-        $revision->proposal_id = Proposal::where('author_id', Auth::user()->id)->orderBy('id', 'desc')->first()->id;
+        $revision->proposal_id = $proposal->id;
         $revision->from_id = Auth::user()->id;
         $revision->message = "Inisiasi Proposal";
         // $revision->file = $request->file;
