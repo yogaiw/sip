@@ -41,4 +41,20 @@ class ProposalController extends Controller
         $revisions = Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get();
         return view('lecturer.detail', compact('proposal', 'revisions'));
     }
+
+    public function submitRevision(Request $request, $proposal_id) {
+        $this->validate($request, [
+            'message' => 'required',
+            // 'file' => 'required'
+        ]);
+
+        Revision::create([
+            'proposal_id' => $proposal_id,
+            'from_id' => Auth::user()->id,
+            'message' => $request->message,
+            // 'file' => $request->file
+        ]);
+
+        return back();
+    }
 }

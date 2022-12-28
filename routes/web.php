@@ -36,4 +36,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/lecturer',[LecturerController::class, 'index'])->name('dashboard.lecturer');
         Route::get('/lecturer/proposal/{id}', [ProposalController::class, 'detail'])->name('proposal.detail');
     });
+
+    Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');
 });
