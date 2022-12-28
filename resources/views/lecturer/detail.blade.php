@@ -13,14 +13,20 @@
             </div>
             <div class="card-body">
                 @forelse ($revisions as $item)
-                    @if ($item->user->role == 1)
-                        <b>{{ $item->user->student->name }}</b> <br>
-                    @elseif ($item->user->role == 2)
-                        <b>{{ $item->user->lecturer->name }}</b> <br>
-                    @endif
-                    {{ $item->message}} <br>
-                    {{ date('D, d M Y H:i', strtotime($item->created_at)) }} <br>
-                    <a href="#" class="btn btn-sm btn-primary">File</a> <br><br>
+                <div class="card shadow mb-3 {{ ($item->max('id')) ? 'border-left-primary' : '' }}">
+                    <div class="card-header">
+                        @if ($item->user->role == 1)
+                            <b>{{ $item->user->student->name }}</b> <br>
+                        @elseif ($item->user->role == 2)
+                            <b>{{ $item->user->lecturer->name }}</b> <br>
+                        @endif
+                        {{ date('D, d M Y H:i', strtotime($item->created_at)) }}
+                    </div>
+                    <div class="card-body">
+                        {{ $item->message}} <br>
+                        <a href="#" class="btn btn-sm btn-primary">File</a>
+                    </div>
+                </div>
                 @empty
                     <span class="align-middle">Anda belum melakukan upload proposal</span>
                 @endforelse
