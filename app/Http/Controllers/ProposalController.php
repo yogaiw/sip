@@ -35,4 +35,10 @@ class ProposalController extends Controller
 
         return redirect()->route('dashboard.student');
     }
+
+    public function detail($id) {
+        $proposal = Proposal::find($id);
+        $revisions = $proposal->revisions()->orderBy('created_at', 'desc')->get();
+        return view('lecturer.detail', compact('proposal', 'revisions'));
+    }
 }

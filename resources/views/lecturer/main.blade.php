@@ -12,15 +12,15 @@
     <title>Lecturer Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="sb-admin-assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link rel="text/css" href="datatables/jquery.dataTables.min.css">
+    <link href="/sb-admin-assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="text/css" href="/datatables/jquery.dataTables.min.css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="sb-admin-assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="sb-admin-assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/sb-admin-assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/sb-admin-assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -42,7 +42,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('dashboard.lecturer') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -151,15 +151,15 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="sb-admin-assets/vendor/jquery/jquery.min.js"></script>
-    <script src="sb-admin-assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/sb-admin-assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/sb-admin-assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="sb-admin-assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/sb-admin-assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="sb-admin-assets/js/sb-admin-2.min.js"></script>
-    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="/sb-admin-assets/js/sb-admin-2.min.js"></script>
+    <script src="/datatables/jquery.dataTables.min.js"></script>
 
     <script>
         $(document).ready(function() {

@@ -65,7 +65,7 @@
                                     @if ($item->user->proposal->count() == 0)
                                         <td>Belum ada judul</td>
                                     @else
-                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                     @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
@@ -92,7 +92,7 @@
                                     @if ($item->user->proposal->count() == 0)
                                         <td>Belum ada judul</td>
                                     @else
-                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                     @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
@@ -119,7 +119,7 @@
                                     @if ($item->user->proposal->count() == 0)
                                         <td>Belum ada judul</td>
                                     @else
-                                        <td>{{ $item->user->proposal->first()->title }}</td>
+                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                     @endif
                                     <td>{{ $item->name }}</td>
                                     <td>not yet implemented</td>
