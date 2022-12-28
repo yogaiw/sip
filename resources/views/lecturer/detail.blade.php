@@ -12,6 +12,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">Log Revisi</h6>
             </div>
             <div class="card-body">
+                <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
+                    <input type="file" name="file"> <br>
+                    <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+                </form>
+                <hr>
                 @forelse ($revisions as $item)
                 <div class="card shadow mb-3 {{ ($item->max('id')) ? 'border-left-primary' : '' }}">
                     <div class="card-header">

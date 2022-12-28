@@ -59,46 +59,46 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        DB::table('proposals')->insert([
-            [
-                'author_id' => 1,
-                'title' => 'Aplikasi Sirespaspro',
-                'abstract_indonesian' => 'anjay',
-                'abstract_english' => 'amazing'
-            ]
-        ]);
+        // DB::table('proposals')->insert([
+        //     [
+        //         'author_id' => 1,
+        //         'title' => 'Aplikasi Sirespaspro',
+        //         'abstract_indonesian' => 'anjay',
+        //         'abstract_english' => 'amazing'
+        //     ]
+        // ]);
 
-        DB::table('revisions')->insert([
-            [
-                'proposal_id' => 1,
-                'from_id' => 1,
-                'message' => 'revisi pertama'
-            ],
-            [
-                'proposal_id' => 1,
-                'from_id' => 3,
-                'message' => 'BAB II kurang blablabl'
-            ],
-            [
-                'proposal_id' => 1,
-                'from_id' => 1,
-                'message' => 'revisi kedua menanggapi feedback'
-            ],
-            [
-                'proposal_id' => 1,
-                'from_id' => 3,
-                'message' => 'Daftar Pustaka nya bblabla'
-            ],
-            [
-                'proposal_id' => 1,
-                'from_id' => 1,
-                'message' => 'sudah diperbaiki'
-            ],
-            [
-                'proposal_id' => 1,
-                'from_id' => 3,
-                'message' => 'Baik saya acc'
-            ],
-        ]);
+        // DB::table('revisions')->insert([
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 1,
+        //         'message' => 'revisi pertama'
+        //     ],
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 3,
+        //         'message' => 'BAB II kurang blablabl'
+        //     ],
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 1,
+        //         'message' => 'revisi kedua menanggapi feedback'
+        //     ],
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 3,
+        //         'message' => 'Daftar Pustaka nya bblabla'
+        //     ],
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 1,
+        //         'message' => 'sudah diperbaiki'
+        //     ],
+        //     [
+        //         'proposal_id' => 1,
+        //         'from_id' => 3,
+        //         'message' => 'Baik saya acc'
+        //     ],
+        // ]);
     }
 }
