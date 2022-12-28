@@ -61,14 +61,16 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($mhsBimbingan1 as $item)
-                                    <td>x</td>
-                                    @if ($item->user->proposal->count() == 0)
-                                        <td>Belum ada judul</td>
-                                    @else
-                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
-                                    @endif
-                                    <td>{{ $item->name }}</td>
-                                    <td>not yet implemented</td>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <td>Belum ada judul</td>
+                                            @else
+                                                <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
+                                            @endif
+                                        <td>{{ $item->name }}</td>
+                                        <td>not yet implemented</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -88,14 +90,16 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($mhsBimbingan2 as $item)
-                                    <td>x</td>
-                                    @if ($item->user->proposal->count() == 0)
-                                        <td>Belum ada judul</td>
-                                    @else
-                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
-                                    @endif
-                                    <td>{{ $item->name }}</td>
-                                    <td>not yet implemented</td>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <td>Belum ada judul</td>
+                                            @else
+                                                <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
+                                            @endif
+                                        <td>{{ $item->name }}</td>
+                                        <td>not yet implemented</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -115,14 +119,16 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($mhsPengujian as $item)
-                                    <td>x</td>
-                                    @if ($item->user->proposal->count() == 0)
-                                        <td>Belum ada judul</td>
-                                    @else
-                                        <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
-                                    @endif
-                                    <td>{{ $item->name }}</td>
-                                    <td>not yet implemented</td>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <td>Belum ada judul</td>
+                                            @else
+                                                <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
+                                            @endif
+                                        <td>{{ $item->name }}</td>
+                                        <td>not yet implemented</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
