@@ -38,7 +38,7 @@ class ProposalController extends Controller
 
     public function detail($id) {
         $proposal = Proposal::find($id);
-        $revisions = $proposal->revisions()->orderBy('created_at', 'desc')->get();
+        $revisions = Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get();
         return view('lecturer.detail', compact('proposal', 'revisions'));
     }
 }
