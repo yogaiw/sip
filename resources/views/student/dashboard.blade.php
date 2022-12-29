@@ -25,6 +25,10 @@
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->nim }}</div>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
+                            <div class="mb-0 font-weight-bold text-gray-800">Program Studi</div>
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->department->name }}</div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
                             <div class="mb-0 font-weight-bold text-gray-800">Pembimbing 1</div>
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->pembimbing1->lecturer->name }}</div>
                         </div>

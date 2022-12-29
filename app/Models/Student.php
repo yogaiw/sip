@@ -13,6 +13,7 @@ class Student extends Model
         'user_id',
         'nim',
         'name',
+        'department_id',
         'pembimbing1_id',
         'pembimbing2_id',
         'penguji_id'
@@ -35,5 +36,10 @@ class Student extends Model
 
     public function penguji() {
         return $this->belongsTo(User::class, 'penguji_id', 'id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
     }
 }

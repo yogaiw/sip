@@ -15,6 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('departments')->insert([
+            [
+                'name' => 'Teknik Informatika',
+            ],
+            [
+                'name' => 'Teknik Elektro'
+            ]
+            ]);
+
         DB::table('users')->insert([
             [
                 'username' => 'zadita', // 1
@@ -39,10 +49,10 @@ class DatabaseSeeder extends Seeder
         DB::table('students')->insert([
             [
                 'user_id' => 1,
-                'nim' => '18102179',
+                'nim' => '18102181',
                 'name' => 'Zadita Awalia',
-                'pembimbing1_id' => 2,
-                'penguji_id' => 3
+                'department_id' => 1,
+                'pembimbing1_id' => 2
             ]
         ]);
 

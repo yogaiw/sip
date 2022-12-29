@@ -69,7 +69,7 @@
                                                 <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                             @endif
                                         <td>{{ $item->name }}</td>
-                                        <td>not yet implemented</td>
+                                        <td>{{ $item->department->name }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -98,7 +98,7 @@
                                                 <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                             @endif
                                         <td>{{ $item->name }}</td>
-                                        <td>not yet implemented</td>
+                                        <td>{{ $item->department->name }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -127,7 +127,7 @@
                                                 <td><a href="{{ route('proposal.detail', ['id' => $item->user->proposal->first()->id]) }}">{{ $item->user->proposal->first()->title }}</a></td>
                                             @endif
                                         <td>{{ $item->name }}</td>
-                                        <td>not yet implemented</td>
+                                        <td>{{ $item->department->name }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
