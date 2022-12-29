@@ -39,28 +39,103 @@
                 class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form action="login" method="POST">
-                @csrf
+                <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                    <a
+                        class="nav-link active"
+                        id="ex1-tab-1"
+                        data-mdb-toggle="tab"
+                        href="#ex1-tabs-1"
+                        role="tab"
+                        aria-controls="ex1-tabs-1"
+                        aria-selected="true">MASUK</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                        id="ex1-tab-3"
+                        data-mdb-toggle="tab"
+                        href="#ex1-tabs-3"
+                        role="tab"
+                        aria-controls="ex1-tabs-3"
+                        aria-selected="false">DAFTAR</a>
+                    </li>
+                </ul>
 
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example3" class="form-control form-control-lg"
-                    placeholder="Username" name="username" />
-                  <label class="form-label" for="form3Example3">Username</label>
-                </div>
+                <div class="tab-content" id="ex1-content">
+                    <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                        <form action="login" method="POST">
+                            @csrf
+                            <div class="form-outline mb-4">
+                              <input type="text" id="form3Example3" class="form-control form-control-lg"
+                                placeholder="Username" name="username" />
+                              <label class="form-label" for="form3Example3">Username</label>
+                            </div>
 
-                <div class="form-outline mb-3">
-                  <input type="password" id="form3Example4" class="form-control form-control-lg"
-                    placeholder="Password" name="password" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
+                            <div class="form-outline mb-3">
+                              <input type="password" id="form3Example4" class="form-control form-control-lg"
+                                placeholder="Password" name="password" />
+                              <label class="form-label" for="form3Example4">Password</label>
+                            </div>
 
-                <div class="text-center text-lg-start mt-4 pt-2">
-                  <button type="submit" class="btn btn-primary btn-lg"
-                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Belum punya akun? <a href="register"
-                      class="link-danger">Daftar disini</a></p>
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                              <button type="submit" class="btn btn-primary btn-lg"
+                                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                        <form action="{{ route('register.student') }}" method="POST">
+                            @csrf
+                            <small class="mb-3">username dan password akan digunakan untuk login nanti</small>
+                            <div class="form-outline mb-2">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Username" name="username" required/>
+                                <label class="form-label" for="form3Example3">Username</label>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Password" name="password" required/>
+                                <label class="form-label" for="form3Example3">Password</label>
+                            </div>
+                            <hr>
+                            <small class="mb-3">Informasi Pribadi</small>
+                            <div class="form-outline mb-2">
+                                <input type="number" id="form3Example3" class="form-control form-control-lg" placeholder="NIM" name="nim" required/>
+                                <label class="form-label" for="form3Example3">NIM</label>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Nama lengkap" name="name" required/>
+                                <label class="form-label" for="form3Example3">Nama Lengkap</label>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Email" name="email" required/>
+                                <label class="form-label" for="form3Example3">Email</label>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <select name="pembimbing1" class="browser-default custom-select">
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <select name="pembimbing2" class="browser-default custom-select">
+                                    <option value="">kosongi jika tidak ada</option>
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-outline mb-2">
+                                <select name="penguji" class="browser-default custom-select">
+                                    @foreach ($dosen as $item)
+                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Daftar</button>
+                        </form>
+                    </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>

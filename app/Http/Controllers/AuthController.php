@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function loginPage() {
-        return view('login');
+        return view('login', [
+            'dosen' => User::where('role', 2)->get()
+        ]);
     }
 
     public function authenticate(Request $request) {
