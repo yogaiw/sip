@@ -110,27 +110,26 @@
                                 <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Email" name="email" required/>
                                 <label class="form-label" for="form3Example3">Email</label>
                             </div>
-                            <div class="form-outline mb-2">
-                                <select name="pembimbing1" class="browser-default custom-select">
-                                    @foreach ($dosen as $item)
-                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="selectPembimbing2">Dosen Pembimbing 1</label>
+                              </div>
+                              <select name="pembimbing1" class="browser-default custom-select" id="selectPembimbing2">
+                                  @foreach ($dosen as $item)
+                                    <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                  @endforeach
+                              </select>
                             </div>
-                            <div class="form-outline mb-2">
-                                <select name="pembimbing2" class="browser-default custom-select">
-                                    <option value="">kosongi jika tidak ada</option>
-                                    @foreach ($dosen as $item)
-                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-outline mb-2">
-                                <select name="penguji" class="browser-default custom-select">
-                                    @foreach ($dosen as $item)
-                                        <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="selectPembimbing2">Dosen Pembimbing 2</label>
+                              </div>
+                              <select name="pembimbing2" class="browser-default custom-select" id="selectPembimbing2">
+                                <option value="">Kosongi jika tidak ada</option>
+                                  @foreach ($dosen as $item)
+                                    <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
+                                  @endforeach
+                              </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Daftar</button>
                         </form>

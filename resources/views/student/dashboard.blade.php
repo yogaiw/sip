@@ -29,8 +29,20 @@
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->pembimbing1->lecturer->name }}</div>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
+                            <div class="mb-0 font-weight-bold text-gray-800">Pembimbing 2</div>
+                            @if ($profile->student->pembimbing2_id != null)
+                            <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->pembimbing2->lecturer->name }}</div>
+                            @else
+                            <div class="mb-0 font-weight-bold text-gray-800">-</div>
+                            @endif
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
                             <div class="mb-0 font-weight-bold text-gray-800">Penguji</div>
+                            @if ($profile->student->penguji_id != null)
                             <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->student->penguji->lecturer->name }}</div>
+                            @else
+                            <div class="mb-0 font-weight-bold text-gray-800">Belum ditetapkan</div>
+                            @endif
                         </div>
                         <a href="" class="btn btn-primary btn-sm mt-3">Edit Profil</a>
                     </div>
