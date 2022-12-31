@@ -33,7 +33,7 @@
                 </form>
                 <hr>
                 @forelse ($revisions as $item)
-                <div class="card shadow mb-3 {{ ($item->from_id == Auth::user()->id) ? 'border-left-primary' : 'ml-4' }}">
+                <div class="card shadow mb-3 {{ ($item->from_id == Auth::user()->id) ? 'border-left-primary mr-5' : 'ml-4' }}">
                     <div class="card-header">
                         @if ($item->user->role == 1)
                             <b>{{ $item->user->student->name }}</b> <br>
