@@ -6,6 +6,19 @@
     <h5>oleh <b>{{ $proposal->author->student->name }}</b></h5>
 </div>
 <div class="row">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <b>Asbtrak</b> <br>
+                {{ $proposal->abstract_indonesian }} <br><br>
+
+                <b>Abstract</b> <br>
+                {{ $proposal->abstract_english }} <br>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-xl-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
