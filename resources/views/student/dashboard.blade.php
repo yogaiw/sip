@@ -106,7 +106,7 @@
                 <hr>
                 @endif
                 @forelse ($revisions as $item)
-                    <div class="card shadow mb-3 {{ ($item->max('id')) ? 'border-left-primary' : '' }}">
+                    <div class="card shadow mb-3 {{ ($item->from_id == Auth::user()->id) ? 'border-left-primary' : 'ml-4' }}">
                         <div class="card-header">
                             @if ($item->user->role == 1)
                                 <b>{{ $item->user->student->name }}</b> <br>
