@@ -48,11 +48,11 @@ class AuthController extends Controller
 
     public function registerStudent(Request $request) {
         $this->validate($request, [
-            'username' => 'required',
-            'password' => 'required',
-            'nim' => 'required',
+            'username' => 'required|unique:users,username',
+            'password' => 'required|min:8',
+            'nim' => 'required|unique:students,nim|numeric',
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
         ]);
 
         $user = User::create([
