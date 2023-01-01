@@ -27,7 +27,7 @@ class ProposalController extends Controller
             'status' => 0
         ]);
 
-        $filename = time().'-'.$request->file('proposal')->getClientOriginalName();
+        $filename = time().'-'.Auth::user()->username.'-'.$request->file('proposal')->getClientOriginalName();
         $request->file('proposal')->move('proposals', $filename);
 
         $revision = new Revision();
