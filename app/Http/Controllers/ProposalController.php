@@ -28,7 +28,7 @@ class ProposalController extends Controller
         ]);
 
         $filename = time().'-'.$request->file('proposal')->getClientOriginalName();
-        $request->file('proposal')->storeAs('public/proposals', $filename);
+        $request->file('proposal')->move('proposals', $filename);
 
         $revision = new Revision();
         $revision->proposal_id = $proposal->id;

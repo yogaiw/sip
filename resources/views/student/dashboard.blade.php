@@ -126,7 +126,7 @@
                         </div>
                         <div class="card-body">
                             {{ $item->message}} <br>
-                            <a href="{{ asset('storage/proposals/'.$item->file) }}" class="btn btn-sm btn-primary">File</a>
+                            <a href="{{ 'proposals/'.$item->file }}" class="btn btn-sm btn-primary">File</a>
                         </div>
                     </div>
                 @empty
