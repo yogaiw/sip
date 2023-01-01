@@ -6,7 +6,6 @@ use App\Models\Proposal;
 use App\Models\Revision;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProposalController extends Controller
 {
