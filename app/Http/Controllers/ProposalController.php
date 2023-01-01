@@ -6,6 +6,7 @@ use App\Models\Proposal;
 use App\Models\Revision;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProposalController extends Controller
 {
@@ -15,7 +16,7 @@ class ProposalController extends Controller
             'title' => 'required',
             'abstract_indonesian' => 'required',
             'abstract_english' => 'required',
-            // 'file' => 'required'
+            'proposal' => 'required|mimes:pdf,doc,docx,txt'
         ]);
 
         $proposal = Proposal::create([
@@ -26,11 +27,14 @@ class ProposalController extends Controller
             'status' => 0
         ]);
 
+        $filename = time().'-'.$request->file('proposal')->getClientOriginalName();
+        $request->file('proposal')->storeAs('public/proposals', $filename);
+
         $revision = new Revision();
         $revision->proposal_id = $proposal->id;
         $revision->from_id = Auth::user()->id;
         $revision->message = "Inisiasi Proposal";
-        // $revision->file = $request->file;
+        $revision->file = $filename;
         $revision->save();
 
         return redirect()->route('dashboard.student');

@@ -61,6 +61,15 @@
                 <h6 class="m-0 font-weight-bold text-primary">Proposal Aktif Anda</h6>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 @if ($myProposal->isNotEmpty())
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -117,7 +126,7 @@
                         </div>
                         <div class="card-body">
                             {{ $item->message}} <br>
-                            <a href="#" class="btn btn-sm btn-primary">File</a>
+                            <a href="{{ asset('storage/proposals/'.$item->file) }}" class="btn btn-sm btn-primary">File</a>
                         </div>
                     </div>
                 @empty
@@ -155,7 +164,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Unggah pdf</label>
-                    <input type="file" class="form-control-file">
+                    <input name="proposal" type="file" class="form-control-file">
                 </div>
                 <button type="submit" class="btn btn-success">Unggah Proposal</button>
             </form>
