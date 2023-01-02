@@ -43,6 +43,12 @@ class DatabaseSeeder extends Seeder
                 'email' => 'mega@localhost',
                 'password' => Hash::make('mega'),
                 'role' => 2
+            ],
+            [
+                'username' => 'staffakademik', // 4
+                'email' => 'akademik@ittelkom-pwt.ac.id',
+                'password' => Hash::make('staff'),
+                'role' => 3
             ]
         ]);
 
@@ -66,6 +72,14 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 3,
                 'nip' => '5678',
                 'name' => 'Mega Pranata'
+            ]
+        ]);
+
+        DB::table('staff')->insert([
+            [
+                'user_id' => 4,
+                'nik' => '123456',
+                'name' => 'Staff Akademik'
             ]
         ]);
 
