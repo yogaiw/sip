@@ -39,3 +39,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');
 });
+
+Route::get('/staff', function () {
+    return view('staff.dashboard');
+})->name('dashboard.staff');
