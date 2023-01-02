@@ -120,10 +120,20 @@
                                 <label class="form-label" for="form3Example3">Email</label>
                             </div>
                             <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="selectPembimbing2">Prodi</label>
+                                </div>
+                                <select name="prodi" class="browser-default custom-select" id="selectPembimbing2" required>
+                                    @foreach ($prodi as $item)
+                                      <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                            <div class="input-group mb-3">
                               <div class="input-group-prepend">
                                 <label class="input-group-text" for="selectPembimbing2">Dosen Pembimbing 1</label>
                               </div>
-                              <select name="pembimbing1" class="browser-default custom-select" id="selectPembimbing2">
+                              <select name="pembimbing1" class="browser-default custom-select" id="selectPembimbing2" required>
                                   @foreach ($dosen as $item)
                                     <option value="{{ $item->id }}">{{ $item->lecturer->name }}</option>
                                   @endforeach

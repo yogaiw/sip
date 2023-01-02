@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class AuthController extends Controller
 {
     public function loginPage() {
         return view('login', [
-            'dosen' => User::where('role', 2)->get()
+            'dosen' => User::where('role', 2)->get(),
+            'prodi' => Department::all()
         ]);
     }
 
@@ -55,6 +57,7 @@ class AuthController extends Controller
             'nim' => 'required|unique:students,nim|numeric',
             'name' => 'required',
             'email' => 'required|email',
+            'prodi' => 'required',
         ]);
 
         $user = User::create([
@@ -69,6 +72,7 @@ class AuthController extends Controller
             'nim' => $request->nim,
             'name' => $request->name,
             'email' => $request->email,
+            'department_id' => $request->prodi,
             'pembimbing1_id' => $request->pembimbing1,
             'pembimbing2_id' => $request->pembimbing2,
             'penguji_id' => $request->penguji
