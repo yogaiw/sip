@@ -25,10 +25,19 @@
                 <h6 class="m-0 font-weight-bold text-primary">Log Revisi</h6>
             </div>
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
-                    <input type="file" name="file"> <br>
+                    <input type="file" name="proposal"> <br>
                     <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                 </form>
                 <hr>
@@ -44,7 +53,7 @@
                     </div>
                     <div class="card-body">
                         {{ $item->message}} <br>
-                        <a href="#" class="btn btn-sm btn-primary">File</a>
+                        <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
                     </div>
                 </div>
                 @empty

@@ -109,7 +109,7 @@
                 <form action="{{ route('proposal.submitrevision', ['proposal_id' => $myProposal->first()->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
-                    <input type="file" name="file"> <br>
+                    <input type="file" name="proposal" required> <br>
                     <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                 </form>
                 <hr>
@@ -126,7 +126,7 @@
                         </div>
                         <div class="card-body">
                             {{ $item->message}} <br>
-                            <a href="{{ 'proposals/'.$item->file }}" class="btn btn-sm btn-primary">File</a>
+                            <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
                         </div>
                     </div>
                 @empty
