@@ -53,7 +53,12 @@
                     </div>
                     <div class="card-body">
                         {{ $item->message}} <br>
-                        <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
+                        @if ($item->file != null)
+                            <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
+                        @endif
+                        @if ($item->user->role == 1 && $item->proposal->status == 0 && $item->created_at == $item->max('created_at'))
+                            <a href="#" class="btn btn-success btn-sm">Approve / Nyatakan Siap Sempro</a>
+                        @endif
                     </div>
                 </div>
                 @empty

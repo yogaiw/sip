@@ -126,7 +126,9 @@
                         </div>
                         <div class="card-body">
                             {{ $item->message}} <br>
-                            <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
+                            @if ($item->file != null)
+                                <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
+                            @endif
                         </div>
                     </div>
                 @empty

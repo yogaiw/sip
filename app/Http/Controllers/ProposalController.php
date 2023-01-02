@@ -48,11 +48,15 @@ class ProposalController extends Controller
     public function submitRevision(Request $request, $proposal_id) {
         $this->validate($request, [
             'message' => 'required',
-            'proposal' => 'required|mimes:pdf,doc,docx,txt'
+            'proposal' => 'mimes:pdf,doc,docx,txt'
         ]);
 
-        $filename = time().'-'.Auth::user()->username.'-'.$request->file('proposal')->getClientOriginalName();
-        $request->file('proposal')->move('proposals', $filename);
+        if($request->hasFile('proposal')) {
+            $filename = time().'-'.Auth::user()->username.'-'.$request->file('proposal')->getClientOriginalName();
+            $request->file('proposal')->move('proposals', $filename);
+        } else {
+            $filename = null;
+        }
 
         Revision::create([
             'proposal_id' => $proposal_id,
