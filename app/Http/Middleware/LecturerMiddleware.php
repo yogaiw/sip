@@ -20,7 +20,7 @@ class LecturerMiddleware
         if(Auth::user()->role == 2) {
             return $next($request);
         } else {
-            return redirect()->route('dashboard.student');
+            return back();
         }
     }
 }

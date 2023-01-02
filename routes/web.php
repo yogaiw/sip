@@ -37,9 +37,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/lecturer/proposal/{id}', [ProposalController::class, 'detail'])->name('proposal.detail');
     });
 
+    Route::middleware('auth.staff')->group(function () {
+        Route::get('/staff', function () {
+            return view('staff.dashboard');
+        })->name('dashboard.staff');
+    });
+
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');
 });
-
-Route::get('/staff', function () {
-    return view('staff.dashboard');
-})->name('dashboard.staff');
