@@ -1,7 +1,7 @@
 @extends('lecturer.main')
 @section('content')
 <!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<div class="mb-4">
     <h1 class="h3 mb-0 text-gray-800">{{ $proposal->title }}</h1>
     <h5>oleh <b>{{ $proposal->author->student->name }}</b></h5>
 </div>
@@ -9,6 +9,10 @@
     <div class="col">
         <div class="card shadow mb-4">
             <div class="card-body">
+                <b>Dosen Pembimbing 1</b> {{ $proposal->author->student->pembimbing1->lecturer->name }} <br>
+                @if ($proposal->author->student->pembimbing2_id != null)
+                    <b>Dosen Pembimbing 2</b> {{ $proposal->author->student->pembimbing2->lecturer->name }} <br> <br>
+                @endif
                 <b>Asbtrak</b> <br>
                 {{ $proposal->abstract_indonesian }} <br><br>
 
