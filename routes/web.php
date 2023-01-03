@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,9 +39,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('auth.staff')->group(function () {
-        Route::get('/staff', function () {
-            return view('staff.dashboard');
-        })->name('dashboard.staff');
+        Route::get('/staff', [StaffController::class, 'index'])->name('dashboard.staff');
     });
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');

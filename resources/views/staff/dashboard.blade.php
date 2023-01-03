@@ -11,20 +11,52 @@
             <div class="card-header py-3">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Sebagai Pembimbing 1</a>
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Semua Proposal</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Sebagai Pembimbing 2</a>
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Proposal sudah ACC Pembimbing</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Sebagai Penguji</a>
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">coba</a>
                     </li>
                 </ul>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <p class="mb-3">Mahasiswa bimbingan anda sebagai Dosen Pembimbing 1</p>
+                        <p class="mb-3">Semua Proposal</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Pembimbing 1</th>
+                                        <th>Pembimbing 2</th>
+                                        <th>Prodi</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($proposal as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->author->student->name }}</td>
+                                        <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
+                                        @if ($item->author->pembimbing2_id != null)
+                                            <td>{{ $item->author->student->pembimbing2->lecturer->name }}</td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
+                                        <td>{{ $item->author->student->department->name }}</td>
+                                        <td>TESTT</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <p class="mb-3">Mahasiswa bimbingan anda sebagai Dosen Pembimbing 2</p>
