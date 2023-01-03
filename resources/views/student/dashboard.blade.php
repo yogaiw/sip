@@ -85,6 +85,16 @@
                             <th>Abstract</th>
                             <td>{{ $myProposal->first()->abstract_english }}</td>
                         </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                @if ($myProposal->first()->status == 0)
+                                    <span class="badge badge-warning">DRAFT</span>
+                                @elseif ($myProposal->first()->status == 1)
+                                    <span class="badge badge-success">ACC OLEH PEMBIMBING / SIAP SEMPRO</span>
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 @else
