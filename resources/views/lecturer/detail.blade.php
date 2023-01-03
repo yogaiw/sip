@@ -56,12 +56,16 @@
                         {{ date('D, d M Y H:i', strtotime($item->created_at)) }}
                     </div>
                     <div class="card-body">
-                        {{ $item->message}} <br>
+                        {{ $item->message }} <br>
                         @if ($item->file != null)
                             <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
                         @endif
                         @if ($item->user->role == 1 && $item->proposal->status == 0 && $item->created_at == $item->max('created_at'))
-                            <a href="#" class="btn btn-success btn-sm">Approve / Nyatakan Siap Sempro</a>
+                            <form action="{{ route('proposal.accdosbing') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="proposal_id" value="{{ $item->proposal->id }}">
+                                <button class="btn btn-success btn-sm">Approve / Nyatakan Siap Sempro</a>
+                            </form>
                         @endif
                     </div>
                 </div>

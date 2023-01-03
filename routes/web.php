@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth.lecturer')->group(function () {
         Route::get('/lecturer',[LecturerController::class, 'index'])->name('dashboard.lecturer');
         Route::get('/lecturer/proposal/{id}', [ProposalController::class, 'detail'])->name('proposal.detail');
+        Route::post('/lecturer/proposal/accdosbing', [ProposalController::class, 'accDosbing'])->name('proposal.accdosbing');
     });
 
     Route::middleware('auth.staff')->group(function () {

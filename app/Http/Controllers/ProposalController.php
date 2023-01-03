@@ -67,4 +67,12 @@ class ProposalController extends Controller
 
         return back();
     }
+
+    public function accDosbing(Request $request) {
+        $proposal = Proposal::find($request->proposal_id);
+        $proposal->status = 1;
+        $proposal->save();
+
+        return back();
+    }
 }
