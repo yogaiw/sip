@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('auth.staff')->group(function () {
         Route::get('/staff', [StaffController::class, 'index'])->name('dashboard.staff');
+        Route::get('/staff/proposal/{id}', [StaffController::class, 'plottingPenguji'])->name('plotting.staff');
     });
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');

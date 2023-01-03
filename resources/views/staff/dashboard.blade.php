@@ -42,7 +42,7 @@
                                     @foreach($proposal as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td>
+                                        <td><a href="{{ route('plotting.staff',['id' => $item->id]) }}">{{ $item->title }}</a></td>
                                         <td>{{ $item->author->student->name }}</td>
                                         <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
                                         @if ($item->author->pembimbing2_id != null)
