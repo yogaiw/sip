@@ -51,7 +51,13 @@
                                             <td>-</td>
                                         @endif
                                         <td>{{ $item->author->student->department->name }}</td>
-                                        <td>TESTT</td>
+                                        <td>
+                                            @if ($item->status == 0)
+                                                <span class="badge badge-warning">Draft</span>
+                                            @elseif ($item->status == 1)
+                                                <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
