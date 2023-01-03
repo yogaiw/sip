@@ -65,8 +65,45 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <p class="mb-3">Mahasiswa bimbingan anda sebagai Dosen Pembimbing 2</p>
-
+                        <p class="mb-3">Proposal yang telah disetujui Dosen Pembimbing</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Pembimbing 1</th>
+                                        <th>Pembimbing 2</th>
+                                        <th>Prodi</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($proposalAccByDosbing as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->author->student->name }}</td>
+                                        <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
+                                        @if ($item->author->pembimbing2_id != null)
+                                            <td>{{ $item->author->student->pembimbing2->lecturer->name }}</td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
+                                        <td>{{ $item->author->student->department->name }}</td>
+                                        <td>
+                                            @if ($item->status == 0)
+                                                <span class="badge badge-warning">Draft</span>
+                                            @elseif ($item->status == 1)
+                                                <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <p class="mb-3">Proposal Mahasiswa yang Anda Uji</p>
