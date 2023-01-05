@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Lecturer;
 use App\Models\Proposal;
 use App\Models\Revision;
+use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -22,5 +24,13 @@ class StaffController extends Controller
             'revisions' => Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get(),
             'lecturer' => Lecturer::all()
         ]);
+    }
+
+    public function plot($student_user_id, $penguji_id) {
+        $student = Student::where('user_id', $student_user_id)->first();
+        $student->penguji_id = $penguji_id;
+        $student->save();
+
+        return back()->with('success', 'Berhasil memplot penguji');
     }
 }

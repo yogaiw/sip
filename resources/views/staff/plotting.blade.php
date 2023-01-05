@@ -2,16 +2,27 @@
 @section('content')
 <!-- Page Heading -->
 <div class="mb-4">
-    <h1 class="h3 mb-0 text-gray-800">{{ $proposal->title }}</h1>
+    <h3 class="mb-0 text-gray-800">{{ $proposal->title }}</h1>
+    @if ($proposal->status == 0)
+        <span class="badge badge-warning">Draft</span>
+    @elseif ($proposal->status == 1)
+        <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+    @endif
     <h5>oleh <b>{{ $proposal->author->student->name }}</b></h5>
 </div>
 <div class="row">
     <div class="col">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success">{{$message}}</div>
+        @endif
         <div class="card shadow mb-4">
             <div class="card-body">
                 <b>Dosen Pembimbing 1</b> {{ $proposal->author->student->pembimbing1->lecturer->name }} <br>
                 @if ($proposal->author->student->pembimbing2_id != null)
                     <b>Dosen Pembimbing 2</b> {{ $proposal->author->student->pembimbing2->lecturer->name }} <br> <br>
+                @endif
+                @if ($proposal->author->student->penguji_id != null)
+                    <b>Dosen Penguji</b> {{ $proposal->author->student->penguji->lecturer->name }} <br> <br>
                 @endif
                 <b>Asbtrak</b> <br>
                 {{ $proposal->abstract_indonesian }} <br><br>
@@ -71,7 +82,17 @@
                                     @foreach ($lecturer as $item)
                                         <tr>
                                             <td>{{ $item->name }}</td>
-                                            <td style="width: 20%"><a href="" class="btn btn-primary btn-sm">Jadikan sebagai Penguji</a></td>
+                                            <td style="width: 20%">
+                                                <form action="{{ route('plot',[
+                                                    'student_user_id' => $proposal->author->id,
+                                                    'penguji_id' => $item->user->id,
+                                                    ]) }}"
+                                                    method="POST"
+                                                    >
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary btn-sm">Jadikan sebagai Penguji</a>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
