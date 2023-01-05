@@ -41,8 +41,13 @@ class ProposalController extends Controller
 
     public function detail($id) {
         $proposal = Proposal::find($id);
-        $revisions = Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get();
-        return view('lecturer.detail', compact('proposal', 'revisions'));
+
+        if($proposal->author->student->pembimbing1_id == Auth::user()->id || $proposal->author->student->pembimbing2_id == Auth::user()->id || $proposal->author->student->penguji_id == Auth::user()->id) {
+            $revisions = Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get();
+            return view('lecturer.detail', compact('proposal', 'revisions'));
+        } else {
+            return back();
+        }
     }
 
     public function submitRevision(Request $request, $proposal_id) {
