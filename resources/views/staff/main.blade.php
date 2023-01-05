@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.student') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.staff') }}">
                 <div class="sidebar-brand-text mx-3">SIREPASPRO <sup>Staff</sup></div>
             </a>
 
@@ -42,7 +42,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('dashboard.lecturer') }}">
+                <a class="nav-link" href="{{ route('dashboard.staff') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
