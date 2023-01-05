@@ -75,6 +75,7 @@
                                         <th>Mahasiswa</th>
                                         <th>Pembimbing 1</th>
                                         <th>Pembimbing 2</th>
+                                        <th>Penguji</th>
                                         <th>Prodi</th>
                                         <th>Status</th>
                                     </tr>
@@ -83,11 +84,16 @@
                                     @foreach($proposalAccByDosbing as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->title }}</td>
+                                        <td><a href="{{ route('plotting.staff',['id' => $item->id]) }}">{{ $item->title }}</a></td>
                                         <td>{{ $item->author->student->name }}</td>
                                         <td>{{ $item->author->student->pembimbing1->lecturer->name }}</td>
-                                        @if ($item->author->pembimbing2_id != null)
+                                        @if ($item->author->student->pembimbing2_id != null)
                                             <td>{{ $item->author->student->pembimbing2->lecturer->name }}</td>
+                                        @else
+                                            <td>-</td>
+                                        @endif
+                                        @if ($item->author->student->penguji_id != null)
+                                            <td>{{ $item->author->student->penguji->lecturer->name }}</td>
                                         @else
                                             <td>-</td>
                                         @endif
