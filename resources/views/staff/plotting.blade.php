@@ -15,6 +15,9 @@
         @if ($message = Session::get('success'))
             <div class="alert alert-success">{{$message}}</div>
         @endif
+        @if (Session::has('error'))
+            <div class="alert alert-danger">{{ Session::get('error') }}</div>
+        @endif
         <div class="card shadow mb-4">
             <div class="card-body">
                 <b>Dosen Pembimbing 1</b> {{ $proposal->author->student->pembimbing1->lecturer->name }} <br>

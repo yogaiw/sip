@@ -28,8 +28,13 @@ class StaffController extends Controller
 
     public function plot($student_user_id, $penguji_id) {
         $student = Student::where('user_id', $student_user_id)->first();
-        $student->penguji_id = $penguji_id;
-        $student->save();
+
+        if($penguji_id == $student->pembimbing1_id || $penguji_id == $student->pembimbing2_id) {
+            return back()->with('error', 'Penguji tidak boleh sama dengan pembimbing');
+        } else {
+            $student->penguji_id = $penguji_id;
+            $student->save();
+        }
 
         return back()->with('success', 'Berhasil memplot penguji');
     }
