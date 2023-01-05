@@ -14,7 +14,7 @@ class StaffController extends Controller
     public function index() {
         return view('staff.dashboard', [
             'proposal' => Proposal::all(),
-            'proposalAccByDosbing' => Proposal::where('status', 1)->get()
+            'proposalAccByDosbing' => Proposal::where('status','>=', 1)->get()
         ]);
     }
 

@@ -7,6 +7,8 @@
         <span class="badge badge-warning">Draft</span>
     @elseif ($proposal->status == 1)
         <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+    @elseif ($proposal->status == 2)
+        <span class="badge badge-success">ACC Pembimbing / Lanjutkan TA</span>
     @endif
     <h5>oleh <b>{{ $proposal->author->student->name }}</b></h5>
 </div>
@@ -78,7 +80,7 @@
                             </form>
                         @endif
                         @if ($item->user->role == 1 && $item->proposal->status == 1 && $item->created_at == $item->max('created_at') && $item->proposal->author->student->penguji_id == Auth::user()->id)
-                            <form action="" method="POST">
+                            <form action="{{ route('proposal.accpenguji') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="proposal_id" value="{{ $item->proposal->id }}">
                                 <button class="btn btn-success btn-sm">Approve / Lanjutkan TA</a>

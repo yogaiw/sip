@@ -92,6 +92,8 @@
                                     <span class="badge badge-warning">DRAFT</span>
                                 @elseif ($myProposal->first()->status == 1)
                                     <span class="badge badge-success">ACC OLEH PEMBIMBING / SIAP SEMPRO</span>
+                                @elseif ($myProposal->first()->status == 2)
+                                    <span class="badge badge-success">ACC OLEH PENGUJI / LANJUTKAN TA</span>
                                 @endif
                             </td>
                         </tr>
