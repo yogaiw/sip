@@ -199,7 +199,7 @@
           <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <h5>Akun</h5>
+                    <h5><b>Personal</b></h5>
                     <hr>
                     <div class="form-group">
                         <label>Username</label>
@@ -213,18 +213,37 @@
                         <label>NIM</label>
                         <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
                     </div>
+                </div><br>
+                <div class="col-lg-6">
+                    <h5><b>Akademik</b></h5>
+                    <hr>
                     <div class="form-group">
                         <label>Program Studi</label>
-                        <select name="department" class="form-select">
+                        <select name="department" class="custom-select">
                             @foreach ($departments as $item)
                                 <option value="{{ $item->id }}" {{ ($item->id == $profile->student->department_id) ? 'selected' : '' }}>{{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <h5>Akademik</h5>
-                    <hr>
+                    <div class="form-group">
+                        <label>Dosen Pembimbing 1</label>
+                        <select name="pembimbing1" class="custom-select">
+                            @foreach ($lecturer as $item)
+                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Dosen Pembimbing 2</label>
+                        <select name="pembimbing2" class="custom-select">
+                            @if ($profile->student->pembimbing2_id == null)
+                                <option value="" selected>-</option>
+                            @endif
+                            @foreach ($lecturer as $item)
+                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
           </div>
