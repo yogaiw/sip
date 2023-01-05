@@ -3,6 +3,11 @@
 <!-- Page Heading -->
 <div class="mb-4">
     <h1 class="h3 mb-0 text-gray-800">{{ $proposal->title }}</h1>
+    @if ($proposal->status == 0)
+        <span class="badge badge-warning">Draft</span>
+    @elseif ($proposal->status == 1)
+        <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+    @endif
     <h5>oleh <b>{{ $proposal->author->student->name }}</b></h5>
 </div>
 <div class="row">
@@ -36,6 +41,11 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
+                    </div>
+                @endif
+                @if (Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
                     </div>
                 @endif
                 <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">

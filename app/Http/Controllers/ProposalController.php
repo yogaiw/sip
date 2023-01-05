@@ -73,6 +73,6 @@ class ProposalController extends Controller
         $proposal->status = 1;
         $proposal->save();
 
-        return back();
+        return back()->with('success', 'Berhasil meng-appove proposal');
     }
 }
