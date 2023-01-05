@@ -70,11 +70,18 @@
                         @if ($item->file != null)
                             <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
                         @endif
-                        @if ($item->user->role == 1 && $item->proposal->status == 0 && $item->created_at == $item->max('created_at'))
+                        @if ($item->user->role == 1 && $item->proposal->status == 0 && $item->created_at == $item->max('created_at') && $item->proposal->author->student->penguji_id != Auth::user()->id)
                             <form action="{{ route('proposal.accdosbing') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="proposal_id" value="{{ $item->proposal->id }}">
                                 <button class="btn btn-success btn-sm">Approve / Nyatakan Siap Sempro</a>
+                            </form>
+                        @endif
+                        @if ($item->user->role == 1 && $item->proposal->status == 1 && $item->created_at == $item->max('created_at') && $item->proposal->author->student->penguji_id == Auth::user()->id)
+                            <form action="" method="POST">
+                                @csrf
+                                <input type="hidden" name="proposal_id" value="{{ $item->proposal->id }}">
+                                <button class="btn btn-success btn-sm">Approve / Lanjutkan TA</a>
                             </form>
                         @endif
                     </div>

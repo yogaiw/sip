@@ -80,4 +80,12 @@ class ProposalController extends Controller
 
         return back()->with('success', 'Berhasil meng-appove proposal');
     }
+
+    public function accPenguji($proposal_id) {
+        $proposal = Proposal::find($proposal_id);
+        $proposal->status = 2;
+        $proposal->save();
+
+        return back()->with('success', 'Berhasil meng-appove proposal');
+    }
 }
