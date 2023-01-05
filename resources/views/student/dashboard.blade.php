@@ -199,58 +199,72 @@
           <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
-                    <h5><b>Personal</b></h5>
+                    <h5><b>Akun</b></h5>
                     <hr>
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $profile->username }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->student->name }}">
-                    </div>
-                    <div class="form-group">
-                        <label>NIM</label>
-                        <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
-                    </div>
-                </div><br>
+                    <form action="">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $profile->username }}">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Ganti Username</button>
+                    </form>
+                    <hr>
+                    <form action="">
+                        <div class="form-group">
+                            <label>Password Lama</label>
+                            <input type="password" class="form-control" name="oldPassword">
+                        </div>
+                        <div class="form-group">
+                            <label>Password Baru</label>
+                            <input type="password" class="form-control" name="newPassword">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary mb-3">Ganti Password</button>
+                    </form>
+                </div><hr><br>
                 <div class="col-lg-6">
                     <h5><b>Akademik</b></h5>
                     <hr>
-                    <div class="form-group">
-                        <label>Program Studi</label>
-                        <select name="department" class="custom-select">
-                            @foreach ($departments as $item)
-                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->department_id) ? 'selected' : '' }}>{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Dosen Pembimbing 1</label>
-                        <select name="pembimbing1" class="custom-select">
-                            @foreach ($lecturer as $item)
-                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Dosen Pembimbing 2</label>
-                        <select name="pembimbing2" class="custom-select">
-                            @if ($profile->student->pembimbing2_id == null)
-                                <option value="" selected>-</option>
-                            @endif
-                            @foreach ($lecturer as $item)
-                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->student->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label>NIM</label>
+                            <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Program Studi</label>
+                            <select name="department" class="custom-select">
+                                @foreach ($departments as $item)
+                                    <option value="{{ $item->id }}" {{ ($item->id == $profile->student->department_id) ? 'selected' : '' }}>{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dosen Pembimbing 1</label>
+                            <select name="pembimbing1" class="custom-select">
+                                @foreach ($lecturer as $item)
+                                    <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Dosen Pembimbing 2</label>
+                            <select name="pembimbing2" class="custom-select">
+                                @if ($profile->student->pembimbing2_id == null)
+                                    <option value="" selected>-</option>
+                                @endif
+                                @foreach ($lecturer as $item)
+                                    <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                    </form>
                 </div>
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
