@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ class StudentController extends Controller
             'myProposal' => $myProposal,
             'profile' => Auth::user(),
             'lecturer' => $lecturer,
-            'revisions' => $revisions
+            'revisions' => $revisions,
+            'departments' => Department::all()
         ]);
     }
 }

@@ -48,7 +48,7 @@
                             <div class="mb-0 font-weight-bold text-gray-800">Belum ditetapkan</div>
                             @endif
                         </div>
-                        <a href="" class="btn btn-primary btn-sm mt-3">Edit Profil</a>
+                        <button type="button" class="btn btn-primary mt-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
                     </div>
                 </div>
             </div>
@@ -184,4 +184,56 @@
       </div>
     </div>
 </div>
+
+<!-- Edit Profil Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>Akun</h5>
+                    <hr>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $profile->username }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->student->name }}">
+                    </div>
+                    <div class="form-group">
+                        <label>NIM</label>
+                        <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Program Studi</label>
+                        <select name="department" class="form-select">
+                            @foreach ($departments as $item)
+                                <option value="{{ $item->id }}" {{ ($item->id == $profile->student->department_id) ? 'selected' : '' }}>{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h5>Akademik</h5>
+                    <hr>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
