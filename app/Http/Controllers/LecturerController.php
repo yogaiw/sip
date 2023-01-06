@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Proposal;
+use App\Models\Revision;
 
 class LecturerController extends Controller
 {
@@ -19,5 +21,19 @@ class LecturerController extends Controller
             'mhsPengujian' => $mhsPengujian,
             'profile' => Auth::user()
         ]);
+    }
+
+    public function kaprodiView($id) {
+        $proposal = Proposal::find($id);
+
+        if($proposal->author->student->department->kaprodi_id == Auth::user()->id) {
+            $revisions = Revision::where('proposal_id', $id)->orderBy('id', 'desc')->get();
+            return view('lecturer.kaprodiview',[
+                'proposal' => $proposal,
+                'revisions' => $revisions
+            ]);
+        } else {
+            return back();
+        }
     }
 }
