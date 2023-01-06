@@ -89,11 +89,14 @@
                             <th>Status</th>
                             <td>
                                 @if ($myProposal->first()->status == 0)
-                                    <span class="badge badge-warning">DRAFT</span>
+                                    <span class="badge badge-warning">DRAFT</span> <br>
+                                    <small>Anda akan melaksanakan bimbingan revisi dengan Dosen Pembimbing disini</small>
                                 @elseif ($myProposal->first()->status == 1)
-                                    <span class="badge badge-success">ACC OLEH PEMBIMBING / SIAP SEMPRO</span>
+                                    <span class="badge badge-success">ACC OLEH PEMBIMBING / SIAP SEMPRO</span> <br>
+                                    <small>Proposal anda telah disetujui oleh Dosen Pembimbing, anda diperbolehkan melakukan seminar dengan menunggu atau menghubungi staff untuk plotting Dosen Penguji</small>
                                 @elseif ($myProposal->first()->status == 2)
                                     <span class="badge badge-success">ACC OLEH PENGUJI / LANJUTKAN TA</span>
+                                    <small>Proposal anda telah disetujui oleh Dosen Penguji, selanjutnya Kepala Program Studi akan menandatangani proposal anda</small>
                                 @endif
                             </td>
                         </tr>

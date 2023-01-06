@@ -20,6 +20,9 @@
                 @if ($proposal->author->student->pembimbing2_id != null)
                     <b>Dosen Pembimbing 2</b> {{ $proposal->author->student->pembimbing2->lecturer->name }} <br> <br>
                 @endif
+                @if ($proposal->author->student->penguji_id != null)
+                    <b>Dosen Penguji</b> {{ $proposal->author->student->penguji->lecturer->name }} <br> <br>
+                @endif
                 <b>Asbtrak</b> <br>
                 {{ $proposal->abstract_indonesian }} <br><br>
 
