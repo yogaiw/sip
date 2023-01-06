@@ -15,16 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        DB::table('departments')->insert([
-            [
-                'name' => 'Teknik Informatika',
-            ],
-            [
-                'name' => 'Teknik Elektro'
-            ]
-            ]);
-
         DB::table('users')->insert([
             [
                 'username' => 'zadita', // 1
@@ -49,6 +39,19 @@ class DatabaseSeeder extends Seeder
                 'email' => 'akademik@ittelkom-pwt.ac.id',
                 'password' => Hash::make('staff'),
                 'role' => 3
+            ],
+            [
+                'username' => 'amalia', // 5
+                'email' => 'amalia@ittelkom-pwt.ac.id',
+                'password' => Hash::make('amalia'),
+                'role' => 2
+            ]
+        ]);
+
+        DB::table('departments')->insert([
+            [
+                'name' => 'Teknik Informatika',
+                'kaprodi_id' => 5
             ]
         ]);
 
@@ -72,6 +75,11 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 3,
                 'nip' => '5678',
                 'name' => 'Mega Pranata'
+            ],
+            [
+                'user_id' => 5,
+                'nip' => '91011',
+                'name' => 'Amalia Beladinna Arifa'
             ]
         ]);
 
