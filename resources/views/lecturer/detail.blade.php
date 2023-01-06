@@ -50,12 +50,39 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
-                    <input type="file" name="proposal"> <br>
-                    <button type="submit" class="btn btn-primary mt-3">Kirim</button>
-                </form>
+
+                <!--
+                    Dibawah ini merupakan form untuk upload pesan dan file revisi.
+                    Ketika dosen pembimbing / penguji sudah melakukan acc proposal, maka form
+                    akan dimatikan/dosen sudah tidak bisa melakukan feedback revisi.
+
+                    TODO : BUAT CONFIRMATION DIALOG SEBELUM PROSES ACC DILAKUKAN
+                -->
+                @if (Auth::user()->id == $proposal->author->student->pembimbing1_id || Auth::user()->id == $proposal->author->student->pembimbing2_id)
+                    @if ($proposal->status == 0)
+                        <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
+                            <input type="file" name="proposal"> <br>
+                            <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+                        </form>
+                    @else
+                        <div class="alert alert-info">Anda sebagai pembimbing sudah melakukan acc</div>
+                    @endif
+                @endif
+                @if (Auth::user()->id == $proposal->author->student->penguji_id)
+                    @if ($proposal->status == 1)
+                        <form action="{{ route('proposal.submitrevision', ['proposal_id' => $proposal->id]) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <textarea class="form-control" name="message" rows="3" placeholder="Pesan Anda" required></textarea> <br>
+                            <input type="file" name="proposal"> <br>
+                            <button type="submit" class="btn btn-primary mt-3">Kirim</button>
+                        </form>
+                    @else
+                        <div class="alert alert-info">Anda sebagai penguji sudah melakukan acc</div>
+                    @endif
+                @endif
+
                 <hr>
                 @forelse ($revisions as $item)
                 <div class="card shadow mb-3 {{ ($item->from_id == Auth::user()->id) ? 'border-left-primary mr-5' : 'ml-4' }}">
