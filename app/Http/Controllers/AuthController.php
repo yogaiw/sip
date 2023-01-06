@@ -78,6 +78,6 @@ class AuthController extends Controller
             'penguji_id' => $request->penguji
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Akun berhasil dibuat. Silahkan login untuk melanjutkan.');
     }
 }
