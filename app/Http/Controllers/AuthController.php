@@ -56,8 +56,7 @@ class AuthController extends Controller
             'password' => 'required|min:8',
             'nim' => 'required|unique:students,nim|numeric',
             'name' => 'required',
-            'email' => 'required|email',
-            'prodi' => 'required',
+            'email' => 'required|email'
         ]);
 
         $user = User::create([
@@ -72,7 +71,7 @@ class AuthController extends Controller
             'nim' => $request->nim,
             'name' => $request->name,
             'email' => $request->email,
-            'department_id' => $request->prodi,
+            'department_id' => 1,
             'pembimbing1_id' => $request->pembimbing1,
             'pembimbing2_id' => $request->pembimbing2,
             'penguji_id' => $request->penguji
