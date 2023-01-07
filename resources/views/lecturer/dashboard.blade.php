@@ -62,6 +62,7 @@
                                         <th>Judul Proposal</th>
                                         <th>Mahasiswa</th>
                                         <th>Prodi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,6 +76,19 @@
                                             @endif
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->department->name }}</td>
+                                        <td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <span class="badge badge-warning">Belum ada judul</span>
+                                            @else
+                                                @if ($item->user->proposal->first()->status == 0)
+                                                    <span class="badge badge-warning">Draft</span>
+                                                @elseif ($item->user->proposal->first()->status == 1)
+                                                    <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                                @elseif ($item->user->proposal->first()->status == 2)
+                                                    <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                                @endif
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -91,6 +105,7 @@
                                         <th>Judul Proposal</th>
                                         <th>Mahasiswa</th>
                                         <th>Prodi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,6 +119,19 @@
                                             @endif
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->department->name }}</td>
+                                        <td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <span class="badge badge-warning">Belum ada judul</span>
+                                            @else
+                                                @if ($item->user->proposal->first()->status == 0)
+                                                    <span class="badge badge-warning">Draft</span>
+                                                @elseif ($item->user->proposal->first()->status == 1)
+                                                    <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                                @elseif ($item->user->proposal->first()->status == 2)
+                                                    <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                                @endif
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -120,6 +148,7 @@
                                         <th>Judul Proposal</th>
                                         <th>Mahasiswa</th>
                                         <th>Prodi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -133,6 +162,19 @@
                                             @endif
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->department->name }}</td>
+                                        <td>
+                                            @if ($item->user->proposal->count() == 0)
+                                                <span class="badge badge-warning">Belum ada judul</span>
+                                            @else
+                                                @if ($item->user->proposal->first()->status == 0)
+                                                    <span class="badge badge-warning">Draft</span>
+                                                @elseif ($item->user->proposal->first()->status == 1)
+                                                    <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                                @elseif ($item->user->proposal->first()->status == 2)
+                                                    <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                                @endif
+                                            @endif
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -149,6 +191,7 @@
                                         <th>Judul Proposal</th>
                                         <th>Mahasiswa</th>
                                         <th>Prodi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -158,6 +201,15 @@
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->author->student->name }}</td>
                                             <td>{{ $item->author->student->department->name }}</td>
+                                            <td>
+                                                @if ($item->status == 0)
+                                                        <span class="badge badge-warning">Draft</span>
+                                                @elseif ($item->status == 1)
+                                                    <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                                                @elseif ($item->status == 2)
+                                                    <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
