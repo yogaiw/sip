@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,11 +16,18 @@ class LecturerController extends Controller
         $mhsBimbingan2 = Student::where('pembimbing2_id', Auth::user()->id)->get();
         $mhsPengujian = Student::where('penguji_id', Auth::user()->id)->get();
 
+        if(Auth::user()->id == Department::find(1)->kaprodi_id) {
+            $mhsPengajuanTtdKaprodi = Proposal::where('status','>=', 2)->get();
+        } else {
+            $mhsPengajuanTtdKaprodi = [];
+        }
+
         return view('lecturer.dashboard', [
             'mhsBimbingan1' => $mhsBimbingan1,
             'mhsBimbingan2' => $mhsBimbingan2,
             'mhsPengujian' => $mhsPengujian,
-            'profile' => Auth::user()
+            'profile' => Auth::user(),
+            'mhsPengajuanTtdKaprodi' => $mhsPengajuanTtdKaprodi
         ]);
     }
 

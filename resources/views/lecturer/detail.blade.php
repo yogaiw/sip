@@ -14,7 +14,7 @@
                             @elseif ($proposal->status == 1)
                                 <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
                             @elseif ($proposal->status == 2)
-                                <span class="badge badge-success">ACC Pembimbing / Lanjutkan TA</span>
+                                <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
                             @endif
                         </th>
                     </tr>

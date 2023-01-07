@@ -140,7 +140,29 @@
                         </div>
                     </div>
                     @if ($profile->has('kaprodiTo')->first()->id == $profile->id)
-                    <div class="tab-pane fade show active" id="kaprodi" role="tabpanel" aria-labelledby="kaprodi-tab">
+                    <div class="tab-pane fade" id="kaprodi" role="tabpanel" aria-labelledby="kaprodi-tab">
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Judul Proposal</th>
+                                        <th>Mahasiswa</th>
+                                        <th>Prodi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($mhsPengajuanTtdKaprodi as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->author->student->name }}</td>
+                                            <td>{{ $item->author->student->department->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     @endif
                 </div>

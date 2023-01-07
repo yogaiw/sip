@@ -14,7 +14,7 @@
                             @elseif ($proposal->status == 1)
                                 <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
                             @elseif ($proposal->status == 2)
-                                <span class="badge badge-success">ACC Pembimbing / Lanjutkan TA</span>
+                                <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
                             @endif
                         </th>
                     </tr>
@@ -50,6 +50,16 @@
                         <td>{{ $proposal->abstract_english }}</td>
                     </tr>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-body">
+
             </div>
         </div>
     </div>
