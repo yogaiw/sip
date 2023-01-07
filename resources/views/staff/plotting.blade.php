@@ -69,7 +69,7 @@
                       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log Revisi</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Plotting Dosen Penguji</a>
+                      <a class="nav-link {{ ($proposal->status == 0) ? 'disabled' : '' }}" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Plotting Dosen Penguji {{ ($proposal->status == 0) ? '(Menunggu ACC dari Dosen Pembimbing)' : '' }}</a>
                     </li>
                 </ul>
             </div>
@@ -96,6 +96,7 @@
                         @endforeach
                     </div>
 
+                    @if ($proposal->status != 0)
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
@@ -126,6 +127,7 @@
                             </table>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

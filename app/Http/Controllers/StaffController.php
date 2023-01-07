@@ -6,8 +6,6 @@ use App\Models\Lecturer;
 use App\Models\Proposal;
 use App\Models\Revision;
 use App\Models\Student;
-use App\Models\User;
-use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
