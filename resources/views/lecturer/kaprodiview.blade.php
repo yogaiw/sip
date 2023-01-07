@@ -7,33 +7,46 @@
             <div class="card-body">
                 <table class="table">
                     <tr>
-                        <th colspan="2" class="text-center">{{ $proposal->title }}</th>
+                        <th colspan="2" class="text-center">
+                            {{ $proposal->title }}
+                            @if ($proposal->status == 0)
+                                <span class="badge badge-warning">Draft</span>
+                            @elseif ($proposal->status == 1)
+                                <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
+                            @elseif ($proposal->status == 2)
+                                <span class="badge badge-success">ACC Pembimbing / Lanjutkan TA</span>
+                            @endif
+                        </th>
                     </tr>
                     <tr>
-                        <td colspan="2" class="text-center">oleh {{ $proposal->author->student->name }}</td>
+                        <td colspan="2" class="text-center">oleh <b>{{ $proposal->author->student->name }}</b></td>
                     </tr>
                     <tr>
-                        <th>Dosen Pembimbing 1</th>
+                        <th style="width: 20%">Dosen Pembimbing 1</th>
                         <td>{{ $proposal->author->student->pembimbing1->lecturer->name }}</td>
                     </tr>
-                    @if ($proposal->author->student->pembimbing2_id != null)
-                        <tr>
-                            <th>Dosen Pembimbing 2</th>
-                            <td>{{ $proposal->author->student->pembimbing2->lecturer->name }}</td>
-                        </tr>
-                    @endif
-                    @if ($proposal->author->student->penguji_id != null)
-                        <tr>
-                            <th>Dosen Penguji</th>
-                            <td>{{ $proposal->author->student->penguji->lecturer->name }}</td>
-                        </tr>
-                    @endif
                     <tr>
-                        <th>Asbtrak</th>
+                        <th style="width: 20%">Dosen Pembimbing 2</th>
+                        @if ($proposal->author->student->pembimbing2_id != null)
+                        <td>{{ $proposal->author->student->pembimbing2->lecturer->name }}</td>
+                        @else
+                        <td>-</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <th style="width: 20%">Dosen Penguji</th>
+                        @if ($proposal->author->student->penguji_id != null)
+                        <td>{{ $proposal->author->student->penguji->lecturer->name }}</td>
+                        @else
+                        <td>Belum Ditetapkan</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <th style="width: 20%">Asbtrak</th>
                         <td>{{ $proposal->abstract_indonesian }}</td>
                     </tr>
                     <tr>
-                        <th>Abstract</th>
+                        <th style="width: 20%">Abstract</th>
                         <td>{{ $proposal->abstract_english }}</td>
                     </tr>
                 </table>
