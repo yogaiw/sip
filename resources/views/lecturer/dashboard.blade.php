@@ -43,6 +43,11 @@
                     <li class="nav-item">
                       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Sebagai Penguji</a>
                     </li>
+                    @if ($profile->has('kaprodiTo')->first()->id == $profile->id)
+                    <li class="nav-item">
+                        <a class="nav-link" id="kaprodi-tab" data-toggle="tab" href="#kaprodi" role="tab" aria-controls="kaprodi" aria-selected="false">Sebagai Kepala Prodi</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
             <div class="card-body">
@@ -134,6 +139,10 @@
                             </table>
                         </div>
                     </div>
+                    @if ($profile->has('kaprodiTo')->first()->id == $profile->id)
+                    <div class="tab-pane fade show active" id="kaprodi" role="tabpanel" aria-labelledby="kaprodi-tab">
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

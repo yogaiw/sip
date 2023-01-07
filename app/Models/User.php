@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Proposal::class, 'author_id', 'id');
     }
+
+    public function kaprodiTo()
+    {
+        return $this->hasOne(Department::class, 'kaprodi_id', 'id');
+    }
 }
