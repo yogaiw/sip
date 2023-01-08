@@ -67,7 +67,7 @@
                         <div class="card shadow text-center">
                             <div class="card-body">
                                 <b>File Terbaru</b> <br>
-                                <b>{{ date('D, d M Y H:i', strtotime($revisions->max('created_at'))) }}</b> <br>
+                                <b>{{ date('D, d M Y H:i', strtotime($revisions->first()->created_at)) }}</b> <br>
                                 <a href="" class="btn btn-success btn-sm">Unduh Dokumen</a>
                             </div>
                         </div>
