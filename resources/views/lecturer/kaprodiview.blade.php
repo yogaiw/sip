@@ -1,6 +1,6 @@
 @extends('lecturer.main')
 @section('content')
-<div class="row">
+<div class="row mb-4">
     <div class="col">
         <div class="card shadow">
             <div class="card-header">Informasi Proposal</div>
@@ -55,12 +55,66 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-4">
     <div class="col">
         <div class="card shadow">
             <div class="card-body">
-
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="alert alert-info">Proposal ini membutuhkan tanda tangan dari Kepala Prodi, lakukan Unduh Proposal untuk tanda tangan digital lalu unggah kembali dokumen yang sudah tertanda tangan</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card shadow text-center">
+                            <div class="card-body">
+                                <b>File Terbaru</b> <br>
+                                <b>{{ date('D, d M Y H:i', strtotime($revisions->max('created_at'))) }}</b> <br>
+                                <a href="" class="btn btn-success btn-sm">Unduh Dokumen</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card shadow text-center">
+                            <div class="card-body">
+                                <b>Unggah Disini</b> <br>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="file" name="file" class="form-control">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header">Log Revisi</div>
+        </div>
+        <div class="card-body">
+            @foreach ($revisions as $item)
+            <div class="card shadow mb-3">
+                <div class="card-header">
+                    @if ($item->user->role == 1)
+                        <b>{{ $item->user->student->name }}</b> <br>
+                    @elseif ($item->user->role == 2)
+                        <b>{{ $item->user->lecturer->name }}</b> <br>
+                    @endif
+                    {{ date('D, d M Y H:i', strtotime($item->created_at)) }}
+                </div>
+                <div class="card-body">
+                    {{ $item->message }} <br>
+                    @if ($item->file != null)
+                        <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>
+                    @endif
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
