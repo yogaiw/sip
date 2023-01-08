@@ -198,7 +198,7 @@
                                     @foreach($mhsPengajuanTtdKaprodi as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->title }}</td>
+                                            <td><a href="{{ route('proposal.kaprodi',['id' => $item->id]) }}">{{ $item->title }}</a></td>
                                             <td>{{ $item->author->student->name }}</td>
                                             <td>{{ $item->author->student->department->name }}</td>
                                             <td>

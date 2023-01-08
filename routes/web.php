@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/lecturer/proposal/{id}', [ProposalController::class, 'detail'])->name('proposal.detail');
         Route::post('/lecturer/proposal/accdosbing', [ProposalController::class, 'accDosbing'])->name('proposal.accdosbing');
         Route::post('/lecturer/proposal/accpenguji',[ProposalController::class, 'accPenguji'])->name('proposal.accpenguji');
+        Route::get('/lecturer/kaprodi/proposal/{id}', [LecturerController::class, 'kaprodiView'])->name('proposal.kaprodi');
     });
 
     Route::middleware('auth.staff')->group(function () {
