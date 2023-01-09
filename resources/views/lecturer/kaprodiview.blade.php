@@ -68,7 +68,9 @@
                             <div class="card-body">
                                 <b>File Terbaru</b> <br>
                                 <b>{{ date('D, d M Y H:i', strtotime($revisions->first()->created_at)) }}</b> <br>
-                                <a href="" class="btn btn-success btn-sm">Unduh Dokumen</a>
+                                @if ($revisions->first()->file != null)
+                                    <a href="{{ '/proposals/'.$revisions->first()->file }}" target="_blank" class="btn btn-sm btn-primary">Unduh</a>
+                                @endif
                             </div>
                         </div>
                     </div>
