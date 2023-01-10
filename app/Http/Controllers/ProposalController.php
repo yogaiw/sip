@@ -106,4 +106,30 @@ class ProposalController extends Controller
 
         return back()->with('success', 'Berhasil meng-appove proposal');
     }
+
+    public function accKaprodi(Request $request) {
+        $this->validate($request, [
+            'proposal' => 'required|mimes:pdf,doc,docx,txt'
+        ]);
+
+        if($request->hasFile('proposal')) {
+            $filename = time().'-'.Auth::user()->username.'-'.$request->file('proposal')->getClientOriginalName();
+            $request->file('proposal')->move('proposals', $filename);
+        } else {
+            $filename = null;
+        }
+
+        Revision::create([
+            'proposal_id' => $request->proposal_id,
+            'from_id' => Auth::user()->id,
+            'message' => 'Telah disetujui dan ditandatangani Kepala Prodi Informatika, Lanjutkan ke Tugas Akhir II',
+            'file' => $filename
+        ]);
+
+        $proposal = Proposal::find($request->proposal_id);
+        $proposal->status = 3;
+        $proposal->save();
+
+        return back()->with('success', 'Berhasil meng-appove proposal');
+    }
 }

@@ -23,12 +23,22 @@
                     </tr>
                     <tr>
                         <th style="width: 20%">Dosen Pembimbing 1</th>
-                        <td>{{ $proposal->author->student->pembimbing1->lecturer->name }}</td>
+                        <td>
+                            {{ $proposal->author->student->pembimbing1->lecturer->name }}
+                            @if ($proposal->approvedByDosbing1 != null)
+                                <span class="badge badge-success">Approved at {{ date('D, d M Y H:i:s', strtotime($proposal->approvedByDosbing1)) }}</span>
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th style="width: 20%">Dosen Pembimbing 2</th>
                         @if ($proposal->author->student->pembimbing2_id != null)
-                        <td>{{ $proposal->author->student->pembimbing2->lecturer->name }}</td>
+                        <td>
+                            {{ $proposal->author->student->pembimbing2->lecturer->name }}
+                            @if ($proposal->approvedByDosbing2 != null)
+                                <span class="badge badge-success">Approved at {{ date('D, d M Y H:i:s', strtotime($proposal->approvedByDosbing2)) }}</span>
+                            @endif
+                        </td>
                         @else
                         <td>-</td>
                         @endif
@@ -36,7 +46,12 @@
                     <tr>
                         <th style="width: 20%">Dosen Penguji</th>
                         @if ($proposal->author->student->penguji_id != null)
-                        <td>{{ $proposal->author->student->penguji->lecturer->name }}</td>
+                        <td>
+                            {{ $proposal->author->student->penguji->lecturer->name }}
+                            @if ($proposal->approvedByPenguji != null)
+                                <span class="badge badge-success">Approved at {{ date('D, d M Y H:i:s', strtotime($proposal->approvedByPenguji)) }}</span>
+                            @endif
+                        </td>
                         @else
                         <td>Belum Ditetapkan</td>
                         @endif
@@ -78,10 +93,12 @@
                         <div class="card shadow text-center">
                             <div class="card-body">
                                 <b>Unggah Disini</b> <br>
-                                <form action="" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('proposal.acckaprodi') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="file" name="file" class="form-control">
+                                        <input type="hidden" name="proposal_id" value="{{ $proposal->id }}">
+                                        <input type="file" name="proposal" class="form-control" required>
+                                        <button type="submit" class="btn btn-sm btn-success">Unggah dan Nyatakan Sah</button>
                                     </div>
                                 </form>
                             </div>
