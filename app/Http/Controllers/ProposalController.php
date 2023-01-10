@@ -75,14 +75,32 @@ class ProposalController extends Controller
 
     public function accDosbing(Request $request) {
         $proposal = Proposal::find($request->proposal_id);
-        $proposal->status = 1;
-        $proposal->save();
+
+        if($proposal->author->student->pembimbing1_id == Auth::user()->id) {
+            $proposal->approvedByDosbing1 = now();
+        } else if($proposal->author->student->pembimbing2_id == Auth::user()->id) {
+            $proposal->approvedByDosbing2 = now();
+        }
+
+        if($proposal->author->student->pembimbing2_id != null) {
+            if($proposal->approvedByDosbing1 != null && $proposal->approvedByDosbing2 != null) {
+                $proposal->status = 1;
+                $proposal->save();
+            } else {
+                $proposal->status = 0;
+                $proposal->save();
+            }
+        } else {
+            $proposal->status = 1;
+            $proposal->save();
+        }
 
         return back()->with('success', 'Berhasil meng-appove proposal');
     }
 
     public function accPenguji(Request $request) {
         $proposal = Proposal::find($request->proposal_id);
+        $proposal->approvedByPenguji = now();
         $proposal->status = 2;
         $proposal->save();
 

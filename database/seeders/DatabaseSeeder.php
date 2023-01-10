@@ -61,7 +61,8 @@ class DatabaseSeeder extends Seeder
                 'nim' => '18102181',
                 'name' => 'Zadita Awalia',
                 'department_id' => 1,
-                'pembimbing1_id' => 2
+                'pembimbing1_id' => 2,
+                'pembimbing2_id' => 5,
             ]
         ]);
 
