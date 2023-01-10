@@ -101,6 +101,18 @@
                                     <span class="badge badge-success">ACC OLEH KEPALA PRODI</span>
                                     <small>Proposal anda telah disahkan oleh Kepala Program Studi, Lanjutkan ke Tugas Akhir II</small>
                                 @endif
+                                <hr>
+                                <div class="alert-info p-3">
+                                    @if ($myProposal->first()->approvedByDosbing1 != null)
+                                        Telah acc oleh Pembimbing 1 pada <b>{{ date('D, d M Y H:i:s', strtotime($myProposal->first()->approvedByDosbing1)) }}</b> <br>
+                                    @endif
+                                    @if ($myProposal->first()->approvedByDosbing2 != null)
+                                        Telah acc oleh Pembimbing 2 pada <b>{{ date('D, d M Y H:i:s', strtotime($myProposal->first()->approvedByDosbing2)) }}</b> <br>
+                                    @endif
+                                    @if ($myProposal->first()->approvedByPenguji != null)
+                                        Telah acc oleh Penguji pada <b>{{ date('D, d M Y H:i:s', strtotime($myProposal->first()->approvedByPenguji)) }}</b> <br>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     </table>
