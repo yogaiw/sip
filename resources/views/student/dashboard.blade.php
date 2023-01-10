@@ -97,6 +97,9 @@
                                 @elseif ($myProposal->first()->status == 2)
                                     <span class="badge badge-success">ACC OLEH PENGUJI / LANJUTKAN TA</span>
                                     <small>Proposal anda telah disetujui oleh Dosen Penguji, selanjutnya Kepala Program Studi akan menandatangani proposal anda</small>
+                                @elseif ($myProposal->first()->status == 3)
+                                    <span class="badge badge-success">ACC OLEH KEPALA PRODI</span>
+                                    <small>Proposal anda telah disahkan oleh Kepala Program Studi, Lanjutkan ke Tugas Akhir II</small>
                                 @endif
                             </td>
                         </tr>
@@ -139,7 +142,7 @@
                             @endif
                             {{ date('D, d M Y H:i', strtotime($item->created_at)) }}
                         </div>
-                        <div class="card-body">
+                        <div class="card-body {{ ($item->from_id == $profile->student->department->kaprodi_id) ? 'bg-success text-white' : '' }}">
                             {{ $item->message}} <br>
                             @if ($item->file != null)
                                 <a href="{{ '/proposals/'.$item->file }}" target="_blank" class="btn btn-sm btn-primary">File</a>

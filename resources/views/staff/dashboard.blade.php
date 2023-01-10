@@ -58,6 +58,8 @@
                                                 <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
                                             @elseif ($item->status == 2)
                                                 <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                            @elseif ($item->status == 3)
+                                                <span class="badge badge-success">ACC Kaprodi / Selesai</span>
                                             @endif
                                         </td>
                                     </tr>
@@ -107,6 +109,8 @@
                                                 <span class="badge badge-success">ACC Pembimbing / Siap Sempro</span>
                                             @elseif ($item->status == 2)
                                                 <span class="badge badge-success">ACC Penguji / Lanjutkan TA</span>
+                                            @elseif ($item->status == 3)
+                                                <span class="badge badge-success">ACC Kaprodi / Selesai</span>
                                             @endif
                                         </td>
                                     </tr>
