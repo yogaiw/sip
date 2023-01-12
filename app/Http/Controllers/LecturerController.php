@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Proposal;
 use App\Models\Revision;
+use App\Models\User;
+use App\Models\Lecturer;
 
 class LecturerController extends Controller
 {
@@ -43,5 +45,24 @@ class LecturerController extends Controller
         } else {
             return back();
         }
+    }
+
+    public function editProfil(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'nik' => 'required|unique:lecturers,nip,'   . Auth::user()->lecturer->id . ''
+        ]);
+
+        $lecturer = Lecturer::where('user_id', Auth::user()->id)->first();
+        $lecturer->name = $request->name;
+        $lecturer->nip = $request->nik;
+        $lecturer->save();
+
+        $user = User::find(Auth::user()->id);
+        $user->email = $request->email;
+        $user->save();
+
+        return back()->with('success_edit_profile', 'Profil berhasil diubah');
     }
 }

@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/lecturer/proposal/accpenguji',[ProposalController::class, 'accPenguji'])->name('proposal.accpenguji');
         Route::get('/lecturer/kaprodi/proposal/{id}', [LecturerController::class, 'kaprodiView'])->name('proposal.kaprodi');
         Route::post('/lecturer/kaprodi/proposal/acc', [ProposalController::class, 'accKaprodi'])->name('proposal.acckaprodi');
+
+        Route::patch('/lecturer/account/editprofil',[LecturerController::class, 'editProfil'])->name('lecturer.editprofil');
     });
 
     Route::middleware('auth.staff')->group(function () {

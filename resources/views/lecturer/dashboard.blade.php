@@ -290,14 +290,20 @@
                 <div class="col-lg-6">
                     <h5><b>Akademik</b></h5>
                     <hr>
-                    <form action="">
+                    <form action="{{ route('lecturer.editprofil') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label>Nama Lengkap</label>
                             <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->lecturer->name }}">
                         </div>
                         <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="email" name="email" placeholder="Email" value="{{ $profile->email }}">
+                        </div>
+                        <div class="form-group">
                             <label>NIK</label>
-                            <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->lecturer->nip }}">
+                            <input class="form-control" type="number" name="nik" placeholder="Nama Lengkap" value="{{ $profile->lecturer->nip }}">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                     </form>
