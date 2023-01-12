@@ -41,10 +41,23 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ Route::is('dashboard.staff') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard.staff') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.staff') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Kelola Akun Mahasiswa</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('dashboard.staff') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Kelola Akun Dosen</span>
+                </a>
             </li>
 
             <!-- Divider -->
