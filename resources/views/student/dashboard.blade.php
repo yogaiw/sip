@@ -264,14 +264,14 @@
                             <label>NIM</label>
                             <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label>Program Studi</label>
                             <select name="department" class="custom-select">
                                 @foreach ($departments as $item)
                                     <option value="{{ $item->id }}" {{ ($item->id == $profile->student->department_id) ? 'selected' : '' }}>{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label>Dosen Pembimbing 1</label>
                             <select name="pembimbing1" class="custom-select">
