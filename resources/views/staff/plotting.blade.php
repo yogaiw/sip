@@ -113,8 +113,8 @@
                         @endforeach
                     </div>
 
-                    @if ($proposal->status != 0)
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        @if ($proposal->status == 1)
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                                 <thead>
@@ -143,8 +143,16 @@
                                 </tbody>
                             </table>
                         </div>
+                        @elseif ($proposal->status == 2)
+                            <div class="alert alert-warning">
+                                Penguji sudah melakukan ACC
+                            </div>
+                        @elseif ($proposal->status == 3)
+                            <div class="alert alert-warning">
+                                Kaprodi sudah melakukan ACC
+                            </div>
+                        @endif
                     </div>
-                    @endif
                 </div>
             </div>
         </div>
