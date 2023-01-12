@@ -224,7 +224,7 @@
                 <div class="col-lg-6">
                     <h5><b>Akun</b></h5>
                     <hr>
-                    <form action="{{ route('student.editusername') }}" method="POST">
+                    <form action="{{ route('account.editusername') }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -234,14 +234,20 @@
                         <button type="submit" class="btn btn-sm btn-primary">Ganti Username</button>
                     </form>
                     <hr>
-                    <form action="">
+                    <form action="{{ route('account.editpassword') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label>Password Lama</label>
-                            <input type="password" class="form-control" name="oldPassword">
+                            <input type="password" class="form-control" name="oldPassword" required>
                         </div>
                         <div class="form-group">
                             <label>Password Baru</label>
-                            <input type="password" class="form-control" name="newPassword">
+                            <input type="password" class="form-control" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ketik Ulang Password Baru</label>
+                            <input type="password" class="form-control" name="newPassword_confirmation" required>
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary mb-3">Ganti Password</button>
                     </form>

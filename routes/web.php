@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\ProposalController;
@@ -31,7 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth.student')->group(function () {
         Route::get('/student', [StudentController::class, 'index'])->name('dashboard.student');
         Route::post('/student/proposal/create', [ProposalController::class, 'create'])->name('proposal.create');
-        Route::patch('/student/account/editusername',[StudentController::class, 'changeUsername'])->name('student.editusername');
     });
 
     Route::middleware('auth.lecturer')->group(function () {
@@ -50,4 +50,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');
+
+    Route::patch('/account/editusername',[AccountController::class, 'changeUsername'])->name('account.editusername');
+    Route::patch('/account/editpassword',[AccountController::class, 'changePassword'])->name('account.editpassword');
 });

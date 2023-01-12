@@ -7,7 +7,6 @@ use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Revision;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -30,17 +29,5 @@ class StudentController extends Controller
             'revisions' => $revisions,
             'departments' => Department::all()
         ]);
-    }
-
-    public function changeUsername(Request $request) {
-        $request->validate([
-            'username' => 'required|unique:users,username'
-        ]);
-
-        $user = User::find(Auth::user()->id);
-        $user->username = $request->username;
-        $user->save();
-
-        return back()->with('success_edit_profile', 'Username berhasil diubah');
     }
 }
