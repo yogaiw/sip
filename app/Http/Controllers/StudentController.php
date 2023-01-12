@@ -7,6 +7,8 @@ use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Revision;
+use App\Models\Student;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -29,5 +31,27 @@ class StudentController extends Controller
             'revisions' => $revisions,
             'departments' => Department::all()
         ]);
+    }
+
+    public function editProfil(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'nim' => 'required|numeric|unique:students,nim,' . Auth::user()->student->id . '',
+            'email' => 'required|email',
+            'pembimbing1' => 'required'
+        ]);
+
+        $user = Student::where('user_id', Auth::user()->id)->first();
+        $user->name = $request->name;
+        $user->nim = $request->nim;
+        $user->pembimbing1_id = $request->pembimbing1;
+        $user->pembimbing2_id = $request->pembimbing2;
+        $user->save();
+
+        $currentUser = User::find(Auth::user()->id);
+        $currentUser->email = $request->email;
+        $currentUser->save();
+
+        return back()->with('success', 'Profil berhasil diubah');
     }
 }

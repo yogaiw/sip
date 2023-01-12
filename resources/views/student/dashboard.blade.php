@@ -255,7 +255,9 @@
                 <div class="col-lg-6">
                     <h5><b>Akademik</b></h5>
                     <hr>
-                    <form action="">
+                    <form action="{{ route('student.editprofil') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label>Nama Lengkap</label>
                             <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->student->name }}">
@@ -263,6 +265,10 @@
                         <div class="form-group">
                             <label>NIM</label>
                             <input class="form-control" type="number" name="nim" placeholder="Nama Lengkap" value="{{ $profile->student->nim }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="text" name="email" placeholder="Email" value="{{ $profile->email }}">
                         </div>
                         {{-- <div class="form-group">
                             <label>Program Studi</label>
@@ -276,7 +282,7 @@
                             <label>Dosen Pembimbing 1</label>
                             <select name="pembimbing1" class="custom-select">
                                 @foreach ($lecturer as $item)
-                                    <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing2_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
+                                    <option value="{{ $item->id }}" {{ ($item->id == $profile->student->pembimbing1_id) ? 'selected' : '' }}>{{ $item->lecturer->name }}</option>
                                 @endforeach
                             </select>
                         </div>
