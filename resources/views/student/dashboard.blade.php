@@ -12,6 +12,9 @@
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
+                @if (Session::has('success_edit_profile'))
+                    <div class="alert alert-success">{{ Session::get('success_edit_profile') }}</div>
+                @endif
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
@@ -221,7 +224,9 @@
                 <div class="col-lg-6">
                     <h5><b>Akun</b></h5>
                     <hr>
-                    <form action="">
+                    <form action="{{ route('student.editusername') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <label>Username</label>
                             <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $profile->username }}">

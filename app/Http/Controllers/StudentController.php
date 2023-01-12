@@ -31,4 +31,16 @@ class StudentController extends Controller
             'departments' => Department::all()
         ]);
     }
+
+    public function changeUsername(Request $request) {
+        $request->validate([
+            'username' => 'required|unique:users,username'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+        $user->username = $request->username;
+        $user->save();
+
+        return back()->with('success_edit_profile', 'Username berhasil diubah');
+    }
 }

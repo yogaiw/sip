@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('auth.student')->group(function () {
         Route::get('/student', [StudentController::class, 'index'])->name('dashboard.student');
         Route::post('/student/proposal/create', [ProposalController::class, 'create'])->name('proposal.create');
+        Route::patch('/student/account/editusername',[StudentController::class, 'changeUsername'])->name('student.editusername');
     });
 
     Route::middleware('auth.lecturer')->group(function () {
