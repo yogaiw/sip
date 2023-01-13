@@ -4,6 +4,43 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 </div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if (Session::has('success_edit_profile'))
+    <div class="alert alert-success">{{ Session::get('success_edit_profile') }}</div>
+@endif
+
+<div class="row">
+    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Profil Staff</div>
+                    <div class="d-flex justify-content-between">
+                        <div class="mb-0 font-weight-bold text-gray-800">Nama</div>
+                        <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->staff->name }}</div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <div class="mb-0 font-weight-bold text-gray-800">NIK</div>
+                        <div class="mb-0 font-weight-bold text-gray-800">{{ $profile->staff->nik }}</div>
+                    </div>
+                    <button type="button" class="btn btn-primary mt-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 <!-- Content Row -->
 <div class="row">
     <div class="col-12">
@@ -128,4 +165,76 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Profil Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5><b>Akun</b></h5>
+                    <hr>
+                    <form action="{{ route('account.editusername') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input class="form-control" type="text" name="username" placeholder="Username" value="{{ $profile->username }}">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Ganti Username</button>
+                    </form>
+                    <hr>
+                    <form action="{{ route('account.editpassword') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <label>Password Lama</label>
+                            <input type="password" class="form-control" name="oldPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password Baru</label>
+                            <input type="password" class="form-control" name="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ketik Ulang Password Baru</label>
+                            <input type="password" class="form-control" name="newPassword_confirmation" required>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary mb-3">Ganti Password</button>
+                    </form>
+                </div><hr><br>
+                <div class="col-lg-6">
+                    <h5><b>Akademik</b></h5>
+                    <hr>
+                    <form action="" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input class="form-control" type="text" name="name" placeholder="Nama Lengkap" value="{{ $profile->staff->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="email" name="email" placeholder="Email" value="{{ $profile->email }}">
+                        </div>
+                        <div class="form-group">
+                            <label>NIK</label>
+                            <input class="form-control" type="number" name="nik" placeholder="Nama Lengkap" value="{{ $profile->staff->nip }}">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

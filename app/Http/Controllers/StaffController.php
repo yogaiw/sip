@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
@@ -16,7 +17,8 @@ class StaffController extends Controller
     public function index() {
         return view('staff.dashboard', [
             'proposal' => Proposal::all(),
-            'proposalAccByDosbing' => Proposal::where('status','>=', 1)->get()
+            'proposalAccByDosbing' => Proposal::where('status','>=', 1)->get(),
+            'profile' => Auth::user()
         ]);
     }
 
