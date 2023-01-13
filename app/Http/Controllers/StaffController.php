@@ -7,6 +7,9 @@ use App\Models\Proposal;
 use App\Models\Revision;
 use App\Models\Student;
 use App\Models\Staff;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -44,5 +47,29 @@ class StaffController extends Controller
             'student' => Student::all(),
             'staff' => Staff::all()
         ]);
+    }
+
+    public function createLecturer(Request $request) {
+        $this->validate($request,[
+            'nip' => 'required|unique:lecturers',
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'username' => 'required|unique:users',
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->username),
+            'role' => 2
+        ]);
+
+        Lecturer::create([
+            'user_id' => $user->id,
+            'nip' => $request->nip,
+            'name' => $request->name,
+        ]);
+
+        return back()->with('success', 'Berhasil menambahkan dosen');
     }
 }

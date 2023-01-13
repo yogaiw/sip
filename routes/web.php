@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/staff/proposal/{id}', [StaffController::class, 'plottingPenguji'])->name('plotting.staff');
         Route::post('/staff/proposal/plot/{student_user_id}/{penguji_id}', [StaffController::class, 'plot'])->name('plot');
         Route::get('/staff/kelola', [StaffController::class, 'kelola'])->name('kelola.staff');
+        Route::post('/staff/kelola/dosen/create',[StaffController::class, 'createLecturer'])->name('staff.createlecturer');
     });
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');

@@ -1,7 +1,19 @@
 @extends('staff.main')
 @section('content')
 <div class="row">
-    <div class="col">
+    <div class="col-12">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (Session::has('success'))
+            <div class="alert alert-success">{{ Session::get('success') }}</div>
+        @endif
         <div class="card shdaow">
             <div class="card-header">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -53,6 +65,28 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <form action="{{ route('staff.createlecturer') }}" method="POST">
+                            @csrf
+                            <div class="d-lg-flex justify-content-start">
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="nip" placeholder="NIK" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="name" placeholder="Nama" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                </div>
+                                <small class="mr-2">Password akan disamakan dengan username</small>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Tambah Dosen</button>
+                                </div>
+                            </div>
+                        </form>
+                        <h5 class="mb-3">List Dosen</h5>
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                                 <thead>
@@ -75,6 +109,24 @@
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>NIK</th>
+                                                <th>Nama</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($staff as $item)
+                                                <tr>
+                                                    <td>{{ $item->nik }}</td>
+                                                    <td>{{ $item->name }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </table>
                         </div>
                     </div>
