@@ -72,4 +72,28 @@ class StaffController extends Controller
 
         return back()->with('success', 'Berhasil menambahkan dosen');
     }
+
+    public function createStaff(Request $request) {
+        $this->validate($request,[
+            'nik' => 'required|unique:staff',
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'username' => 'required|unique:users',
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->username),
+            'role' => 3
+        ]);
+
+        Staff::create([
+            'user_id' => $user->id,
+            'nik' => $request->nik,
+            'name' => $request->name,
+        ]);
+
+        return back()->with('success', 'Berhasil menambahkan staff');
+    }
 }

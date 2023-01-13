@@ -70,7 +70,7 @@
                             @csrf
                             <div class="d-lg-flex justify-content-start mb-4">
                                 <div class="form-group mr-2">
-                                    <input type="text" class="form-control" name="nip" placeholder="NIK" required>
+                                    <input type="number" class="form-control" name="nip" placeholder="NIK" required>
                                 </div>
                                 <div class="form-group mr-2">
                                     <input type="text" class="form-control" name="name" placeholder="Nama" required>
@@ -81,7 +81,9 @@
                                 <div class="form-group mr-2">
                                     <input type="text" class="form-control" name="username" placeholder="Username" required>
                                 </div>
-                                <small class="mr-2">Password akan disamakan dengan username</small>
+                                <div class="form-group">
+                                    <small class="mr-2">Password akan disamakan dengan username</small>
+                                </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Tambah Dosen</button>
                                 </div>
@@ -109,6 +111,32 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <h5 class="mb-2">Buat Staff Baru</h5>
+                        <form action="{{ route('staff.createstaff') }}" method="POST">
+                            @csrf
+                            <div class="d-lg-flex justify-content-start mb-4">
+                                <div class="form-group mr-2">
+                                    <input type="number" class="form-control" name="nik" placeholder="NIK" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="name" placeholder="Nama" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <small class="mr-2">Password akan disamakan dengan username</small>
+                                </div>
+                                <div class="form-group mr-2">
+                                    <button type="submit" class="btn btn-success">Buat Staff Baru</button>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
+                        <h5 class="mb-3">List Staff</h5>
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
                                 <div class="table-responsive">
