@@ -65,9 +65,10 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <h5 class="mb-2">Buat Dosen Baru</h5>
                         <form action="{{ route('staff.createlecturer') }}" method="POST">
                             @csrf
-                            <div class="d-lg-flex justify-content-start">
+                            <div class="d-lg-flex justify-content-start mb-4">
                                 <div class="form-group mr-2">
                                     <input type="text" class="form-control" name="nip" placeholder="NIK" required>
                                 </div>
@@ -86,6 +87,7 @@
                                 </div>
                             </div>
                         </form>
+                        <hr>
                         <h5 class="mb-3">List Dosen</h5>
                         <div class="table-responsive">
                             <table class="table table-bordered display" id="" width="100%" cellspacing="0">
