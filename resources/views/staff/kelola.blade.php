@@ -1,0 +1,86 @@
+@extends('staff.main')
+@section('content')
+<div class="row">
+    <div class="col">
+        <div class="card shdaow">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mahasiswa</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Dosen</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Staff</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>NIM</th>
+                                        <th>Nama</th>
+                                        <th>Status Proposal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($student as $item)
+                                        <tr>
+                                            <td>{{ $item->nim }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>
+                                                @if ($item->user->proposal->count() == 0)
+                                                    <span class="badge badge-danger">Belum Mengajukan</span>
+                                                @elseif ($item->user->proposal->first()->status == 0)
+                                                    <span class="badge badge-warning">Draft</span>
+                                                @elseif ($item->user->proposal->first()->status == 1)
+                                                    <span class="badge badge-success">Acc Pembimbing</span>
+                                                @elseif ($item->user->proposal->first()->status == 2)
+                                                    <span class="badge badge-success">Acc Penguji</span>
+                                                @elseif ($item->user->proposal->first()->status == 3)
+                                                    <span class="badge badge-success">Acc Kaprodi</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($lecturer as $item)
+                                        <tr>
+                                            <td>{{ $item->nip }}</td>
+                                            <td>{{ $item->name }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="" width="100%" cellspacing="0">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

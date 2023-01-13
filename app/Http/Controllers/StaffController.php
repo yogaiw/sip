@@ -6,6 +6,7 @@ use App\Models\Lecturer;
 use App\Models\Proposal;
 use App\Models\Revision;
 use App\Models\Student;
+use App\Models\Staff;
 
 class StaffController extends Controller
 {
@@ -35,5 +36,13 @@ class StaffController extends Controller
         }
 
         return back()->with('success', 'Berhasil memplot penguji');
+    }
+
+    public function kelola() {
+        return view('staff.kelola', [
+            'lecturer' => Lecturer::all(),
+            'student' => Student::all(),
+            'staff' => Staff::all()
+        ]);
     }
 }
