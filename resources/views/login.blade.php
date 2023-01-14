@@ -110,6 +110,10 @@
                                 <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Password" name="password" required/>
                                 <label class="form-label" for="form3Example3">Password</label>
                             </div>
+                            <div class="form-outline mb-2">
+                                <input type="password" id="form3Example3" class="form-control form-control-lg" placeholder="Konfirmasi Password" name="password_confirmation" required/>
+                                <label class="form-label">Ketik Ulang Password</label>
+                            </div>
                             <hr>
                             <small class="mb-3">Informasi Pribadi</small>
                             <div class="form-outline mb-2">

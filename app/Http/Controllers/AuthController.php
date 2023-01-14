@@ -53,7 +53,7 @@ class AuthController extends Controller
     public function registerStudent(Request $request) {
         $this->validate($request, [
             'username' => 'required|unique:users,username',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
             'nim' => 'required|unique:students,nim|numeric',
             'name' => 'required',
             'email' => 'required|email'
