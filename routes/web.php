@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/staff/kelola', [StaffController::class, 'kelola'])->name('kelola.staff');
         Route::post('/staff/kelola/dosen/create',[StaffController::class, 'createLecturer'])->name('staff.createlecturer');
         Route::post('/staff/kelola/staff/create',[StaffController::class, 'createStaff'])->name('staff.createstaff');
+
+        Route::patch('/staff/account/editprofil',[StaffController::class, 'editProfil'])->name('staff.editprofil');
     });
 
     Route::post('/proposal/submitrevision/{proposal_id}', [ProposalController::class, 'submitRevision'])->name('proposal.submitrevision');

@@ -213,7 +213,7 @@
                 <div class="col-lg-6">
                     <h5><b>Akademik</b></h5>
                     <hr>
-                    <form action="" method="POST">
+                    <form action="{{ route('staff.editprofil') }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -226,7 +226,7 @@
                         </div>
                         <div class="form-group">
                             <label>NIK</label>
-                            <input class="form-control" type="number" name="nik" placeholder="Nama Lengkap" value="{{ $profile->staff->nip }}">
+                            <input class="form-control" type="number" name="nik" placeholder="NIK" value="{{ $profile->staff->nik }}">
                         </div>
                         <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                     </form>

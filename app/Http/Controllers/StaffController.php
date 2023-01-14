@@ -98,4 +98,23 @@ class StaffController extends Controller
 
         return back()->with('success', 'Berhasil menambahkan staff');
     }
+
+    public function editProfil(Request $request) {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'nik' => 'required|numeric|unique:staff,nik,'. Auth::user()->staff->id .''
+        ]);
+
+        $staff = Staff::where('user_id', Auth::user()->id)->first();
+        $staff->name = $request->name;
+        $staff->nik = $request->nik;
+        $staff->save();
+
+        $user = User::find(Auth::user()->id);
+        $user->email = $request->email;
+        $user->save();
+
+        return back()->with('success_edit_profile', 'Berhasil mengubah profil');
+    }
 }
