@@ -53,9 +53,9 @@
                     <li class="nav-item">
                       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Proposal sudah ACC Pembimbing</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">coba</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="card-body">
@@ -156,10 +156,10 @@
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    {{-- <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <p class="mb-3">Proposal Mahasiswa yang Anda Uji</p>
 
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
