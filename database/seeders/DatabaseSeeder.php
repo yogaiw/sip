@@ -18,19 +18,19 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'username' => 'zadita', // 1
-                'email' => 'zadita@localhost',
+                'email' => '18102181@ittelkom-pwt.ac.id',
                 'password' => Hash::make('zadita'),
                 'role' => 1
             ],
             [
                 'username' => 'trihastuti', // 2
-                'email' => 'trihastuti@localhost',
+                'email' => 'trihastuti@ittelkom-pwt.ac.id',
                 'password' => Hash::make('trihastuti'),
                 'role' => 2
             ],
             [
                 'username' => 'mega', // 3
-                'email' => 'mega@localhost',
+                'email' => 'mega@ittelkom-pwt.ac.id',
                 'password' => Hash::make('mega'),
                 'role' => 2
             ],
@@ -45,7 +45,37 @@ class DatabaseSeeder extends Seeder
                 'email' => 'amalia@ittelkom-pwt.ac.id',
                 'password' => Hash::make('amalia'),
                 'role' => 2
-            ]
+            ],
+            [
+                'username' => 'adityadwiputro', // 6
+                'email' => 'aditya@ittelkom-pwt.ac.id',
+                'password' => Hash::make('adityadwiputro'),
+                'role' => 2
+            ],
+            [
+                'username' => 'agiprasetiadi', // 7
+                'email' => 'agi@ittelkom-pwt.ac.id',
+                'password' => Hash::make('agiprasetiadi'),
+                'role' => 2
+            ],
+            [
+                'username' => 'anggizafia', // 8
+                'email' => 'zafia@ittelkom-pwt.ac.id',
+                'password' => Hash::make('anggizafia'),
+                'role' => 2
+            ],
+            [
+                'username' => 'aguspriyanto', // 9
+                'email' => 'agus_priyanto@ittelkom-pwt.ac.id',
+                'password' => Hash::make('aguspriyanto'),
+                'role' => 2
+            ],
+            [
+                'username' => 'diandra', // 10
+                'email' => 'diandra@ittelkom-pwt.ac.id',
+                'password' => Hash::make('diandra'),
+                'role' => 2
+            ],
         ]);
 
         DB::table('departments')->insert([
@@ -69,19 +99,44 @@ class DatabaseSeeder extends Seeder
         DB::table('lecturers')->insert([
             [
                 'user_id' => 2,
-                'nip' => '1234',
-                'name' => 'Trihastuti'
+                'nip' => '19890021',
+                'name' => 'Trihastuti, S.Kom., M.T.'
             ],
             [
                 'user_id' => 3,
-                'nip' => '5678',
-                'name' => 'Mega Pranata'
+                'nip' => '20930025',
+                'name' => 'Mega Pranata, S.Pd., M.Kom.'
             ],
             [
                 'user_id' => 5,
-                'nip' => '91011',
-                'name' => 'Amalia Beladinna Arifa'
-            ]
+                'nip' => '20920001',
+                'name' => 'Amalia Beladinna Arifa, S.Pd., M.Cs.'
+            ],
+            [
+                'user_id' => 6,
+                'nip' => '17930052',
+                'name' => 'Aditya Dwi Putro, S.Kom., M.Kom.'
+            ],
+            [
+                'user_id' => 7,
+                'nip' => '20880003',
+                'name' => 'Agi Prasetiadi, S.T., M.Eng.'
+            ],
+            [
+                'user_id' => 8,
+                'nip' => '19870011',
+                'name' => 'Anggi Zafia, S.T., M.Eng.'
+            ],
+            [
+                'user_id' => 9,
+                'nip' => '14820069',
+                'name' => 'Agus Priyanto, S.Kom., M.Kom.'
+            ],
+            [
+                'user_id' => 10,
+                'nip' => '20930048',
+                'name' => 'Diandra Chika Fransisca, S.Si., M.Sc.'
+            ],
         ]);
 
         DB::table('staff')->insert([
